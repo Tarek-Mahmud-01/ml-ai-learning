@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>HRM Detective Report</title><style>
+:root{--bg:#f5f6fb;--card:#fff;--ink:#181a2b;--soft:#5a5d78;--faint:#8b8ea8;
+--line:#e5e7f2;--accent:#4f46e5;--ok:#0f9d6b;--bad:#d6336c;--bad-bg:#fdeaf1;
+--mono:ui-monospace,Consolas,monospace;--sans:-apple-system,"Segoe UI",sans-serif;}
+@media(prefers-color-scheme:dark){:root{--bg:#0e0f1a;--card:#16182a;--ink:#eceefb;
+--soft:#aab;--faint:#777c9e;--line:#282b45;--accent:#8b85f5;--ok:#34d399;--bad:#f472a6;--bad-bg:#2a1220;}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+.wrap{max-width:920px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .4rem}
+h1{font-size:1.9rem;margin:0 0 1.5rem;letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.25rem}
+.kpi .lbl{font-family:var(--mono);font-size:.72rem;color:var(--faint);text-transform:uppercase}
+.kpi .val{font-size:1.9rem;font-weight:700;margin-top:.25rem;font-variant-numeric:tabular-nums}
+.kpi.bad .val{color:var(--bad)}.kpi.good .val{color:var(--ok)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tw{overflow-x:auto}th{text-align:left;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--faint);padding:.8rem .9rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:.8rem .9rem;border-bottom:1px solid var(--line);font-size:.9rem}tr:last-child td{border:none}
+.mono{font-family:var(--mono)}.num{text-align:right;font-variant-numeric:tabular-nums}
+.dim{color:var(--soft)}.neg{color:var(--bad)}.pos{color:var(--accent)}
+.b{font-family:var(--mono);font-size:.7rem;font-weight:700;padding:.25rem .55rem;border-radius:6px}
+.b.bad{color:var(--bad);background:var(--bad-bg)}
+.note{margin-top:1.5rem;color:var(--soft);font-size:.85rem}
+</style></head><body><div class=wrap>
+<p class=eyebrow>HRM Detective · Payslip Audit</p>
+<h1>Payslip investigation results</h1>
+<div class=cards>
+<div class=kpi><div class=lbl>Total checked</div><div class=val>200</div></div>
+<div class="kpi good"><div class=lbl>Correct</div><div class=val>187</div></div>
+<div class="kpi bad"><div class=lbl>Flagged wrong</div><div class=val>13</div></div>
+<div class="kpi bad"><div class=lbl>Money at risk</div><div class=val>$1,173</div></div>
+</div>
+<div class=tw><table><thead><tr>
+<th>ID</th><th>Name</th><th>Shift</th><th>Paid</th><th>Expected</th><th>Diff</th><th>Reason</th>
+</tr></thead><tbody><tr>
+          <td class=mono>E110</td><td>Bilal</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$319.55</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+159.55</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E107</td><td>Sadia</td>
+          <td class="mono dim">09:00-19:00 (10.0h)</td>
+          <td class="mono num">$319.97</td>
+          <td class="mono num">$190.00</td>
+          <td class="mono num pos">+129.97</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E104</td><td>Hasan</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$273.80</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+113.80</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E100</td><td>Ayesha</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$263.51</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+103.51</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E100</td><td>Ayesha</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$261.21</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+101.21</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E103</td><td>Fatima</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$73.24</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num neg">-86.76</td>
+          <td><span class="b bad">Underpaid</span></td>
+        </tr><tr>
+          <td class=mono>E105</td><td>Nadia</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$246.71</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+86.71</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E105</td><td>Nadia</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$244.44</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+84.44</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E108</td><td>Tariq</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$92.34</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num neg">-67.66</td>
+          <td><span class="b bad">Underpaid</span></td>
+        </tr><tr>
+          <td class=mono>E111</td><td>Zara</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$227.43</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+67.43</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E105</td><td>Nadia</td>
+          <td class="mono dim">09:00-17:00 (8.0h)</td>
+          <td class="mono num">$198.54</td>
+          <td class="mono num">$140.00</td>
+          <td class="mono num pos">+58.54</td>
+          <td><span class="b bad">Overpaid</span></td>
+        </tr><tr>
+          <td class=mono>E102</td><td>Karim</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$102.48</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num neg">-57.52</td>
+          <td><span class="b bad">Underpaid</span></td>
+        </tr><tr>
+          <td class=mono>E105</td><td>Nadia</td>
+          <td class="mono dim">09:00-18:00 (9.0h)</td>
+          <td class="mono num">$103.84</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num neg">-56.16</td>
+          <td><span class="b bad">Underpaid</span></td>
+        </tr></tbody></table></div>
+<p class=note>Only flagged payslips are shown. Rules: 9h shift (8 work + 1 lunch),
+$20/h base, $30/h overtime after 9h. <b>Milestone 3:</b> add Isolation Forest to also
+catch unusual patterns the rules miss.</p>
+</div></body></html>

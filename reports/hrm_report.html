@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HRM Payslip Check — Report</title>
+<style>
+  :root {
+    --bg:#f5f6fb; --card:#fff; --ink:#181a2b; --soft:#5a5d78; --faint:#8b8ea8;
+    --line:#e5e7f2; --accent:#4f46e5; --ok:#0f9d6b; --ok-bg:#e4f6ef;
+    --bad:#d6336c; --bad-bg:#fdeaf1; --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+    --sans:-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e0f1a;--card:#16182a;--ink:#eceefb;--soft:#aab;--faint:#777c9e;
+    --line:#282b45;--accent:#8b85f5;--ok:#34d399;--ok-bg:#10261f;--bad:#f472a6;--bad-bg:#2a1220;}
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+  .wrap{max-width:1000px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .4rem;}
+  h1{font-size:1.9rem;margin:0 0 .4rem;letter-spacing:-.02em;}
+  .src{color:var(--faint);font-family:var(--mono);font-size:.82rem;margin-bottom:1.75rem;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.25rem;}
+  .kpi .lbl{font-family:var(--mono);font-size:.75rem;color:var(--faint);text-transform:uppercase;letter-spacing:.05em;}
+  .kpi .val{font-size:2rem;font-weight:700;margin-top:.25rem;font-variant-numeric:tabular-nums;}
+  .kpi.good .val{color:var(--ok);} .kpi.bad .val{color:var(--bad);}
+  .kpi .unit{font-size:.9rem;color:var(--faint);font-weight:500;}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .tablewrap{overflow-x:auto;}
+  th{text-align:left;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);padding:.85rem .9rem;border-bottom:1px solid var(--line);white-space:nowrap;}
+  td{padding:.8rem .9rem;border-bottom:1px solid var(--line);font-size:.92rem;}
+  tr:last-child td{border-bottom:none;}
+  .row-bad{background:var(--bad-bg);}
+  .mono{font-family:var(--mono);} .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .dim{color:var(--soft);} .pos{color:var(--bad);} .neg{color:var(--accent);} .zero{color:var(--faint);}
+  .b{font-family:var(--mono);font-size:.72rem;font-weight:700;padding:.25rem .55rem;border-radius:6px;white-space:nowrap;}
+  .b.ok{color:var(--ok);background:var(--ok-bg);} .b.bad{color:var(--bad);background:var(--bad-bg);}
+  footer{margin-top:2rem;color:var(--faint);font-family:var(--mono);font-size:.78rem;}
+  .rules{margin-top:1.5rem;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.25rem;font-size:.85rem;color:var(--soft);}
+  .rules code{font-family:var(--mono);color:var(--accent);}
+</style></head><body>
+<div class="wrap">
+  <p class="eyebrow">HRM Anomaly Check · Live Report</p>
+  <h1>Payslip verification results</h1>
+  <p class="src">source: data/payslips_sample.csv &nbsp;·&nbsp; 7 payslips analyzed</p>
+
+  <div class="cards">
+    <div class="kpi"><div class="lbl">Total checked</div><div class="val">7</div></div>
+    <div class="kpi good"><div class="lbl">Correct</div><div class="val">6</div></div>
+    <div class="kpi bad"><div class="lbl">Errors found</div><div class="val">True</div></div>
+    <div class="kpi"><div class="lbl">Accuracy</div><div class="val">86<span class="unit">%</span></div></div>
+    <div class="kpi bad"><div class="lbl">Overpaid</div><div class="val">$120</div></div>
+    <div class="kpi"><div class="lbl">Underpaid</div><div class="val">$180</div></div>
+  </div>
+
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th>ID</th><th>Name</th><th>Shift</th><th>Hours</th><th>OT</th>
+      <th>Paid</th><th>Expected</th><th>Diff</th><th>Status</th>
+    </tr></thead>
+    <tbody><tr class="">
+          <td class="mono">E001</td>
+          <td>Ayesha</td>
+          <td class="mono dim">09:00–18:00</td>
+          <td class="mono num">9.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="">
+          <td class="mono">E002</td>
+          <td>Rahim</td>
+          <td class="mono dim">09:00–20:00</td>
+          <td class="mono num">11.0</td>
+          <td class="mono num">2.0</td>
+          <td class="mono num">$220.00</td>
+          <td class="mono num">$220.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="row-bad">
+          <td class="mono">E003</td>
+          <td>Karim</td>
+          <td class="mono dim">09:00–18:00</td>
+          <td class="mono num">9.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$100.00</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num neg">-60.00</td>
+          <td><span class='b bad'>WRONG</span></td>
+        </tr><tr class="">
+          <td class="mono">E004</td>
+          <td>Fatima</td>
+          <td class="mono dim">08:30–17:30</td>
+          <td class="mono num">9.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="">
+          <td class="mono">E005</td>
+          <td>Hasan</td>
+          <td class="mono dim">09:00–19:00</td>
+          <td class="mono num">10.0</td>
+          <td class="mono num">1.0</td>
+          <td class="mono num">$190.00</td>
+          <td class="mono num">$190.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="row-bad">
+          <td class="mono">E006</td>
+          <td>Nadia</td>
+          <td class="mono dim">09:00–18:00</td>
+          <td class="mono num">9.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$250.00</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num pos">+90.00</td>
+          <td><span class='b bad'>WRONG</span></td>
+        </tr><tr class="">
+          <td class="mono">E007</td>
+          <td>Imran</td>
+          <td class="mono dim">10:00–16:00</td>
+          <td class="mono num">6.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$100.00</td>
+          <td class="mono num">$100.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="row-bad">
+          <td class="mono">E008</td>
+          <td>Sadia</td>
+          <td class="mono dim">09:00–21:00</td>
+          <td class="mono num">12.0</td>
+          <td class="mono num">3.0</td>
+          <td class="mono num">$280.00</td>
+          <td class="mono num">$250.00</td>
+          <td class="mono num pos">+30.00</td>
+          <td><span class='b bad'>WRONG</span></td>
+        </tr><tr class="">
+          <td class="mono">E009</td>
+          <td>Tariq</td>
+          <td class="mono dim">09:00–18:00</td>
+          <td class="mono num">9.0</td>
+          <td class="mono num">0</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num zero">0.00</td>
+          <td><span class='b ok'>CORRECT</span></td>
+        </tr><tr class="row-bad">
+          <td class="mono">E010</td>
+          <td>Mona</td>
+          <td class="mono dim">09:00–22:00</td>
+          <td class="mono num">13.0</td>
+          <td class="mono num">4.0</td>
+          <td class="mono num">$160.00</td>
+          <td class="mono num">$280.00</td>
+          <td class="mono num neg">-120.00</td>
+          <td><span class='b bad'>WRONG</span></td>
+        </tr></tbody>
+  </table></div>
+
+  <div class="rules">
+    <strong>Rules applied:</strong>
+    9h shift (8 work + 1 lunch) · base <code>$20/h</code> ·
+    overtime after 9h at <code>$30/h</code> ·
+    a payslip is <code>WRONG</code> if reported pay differs from expected by more than $0.01.
+  </div>
+
+  <footer>Generated locally by hrm_report_browser.py · no server, opened via file://</footer>
+</div></body></html>

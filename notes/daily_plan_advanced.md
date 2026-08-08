@@ -14,7 +14,7 @@
 
 # 🧮 WEEK 1 — Math Backbone + Deep Learning Start
 
-### ☐ Day 1 — Linear Algebra Intuition
+### ✅ Day 1 — Linear Algebra Intuition  — DONE (practice 8/8)
 - 🧠 **Theory:** Vectors, matrices, matrix multiplication, dot product. Watch 3Blue1Brown "Essence of Linear Algebra" (ch 1–4).
 - ⌨️ **Practice:** NumPy — create vectors/matrices, do dot products, matrix multiply by hand then verify with `np.dot`.
 - 🛠️ **Project:** Write a function that multiplies two matrices *manually* (nested loops), compare to NumPy. Understand a neural layer = matrix multiply.

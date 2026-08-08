@@ -7,9 +7,23 @@ venv/
 
 # Data & Models
 data/
-models/*.joblib
+*.joblib
 reports/*.png
+
+# Node / Next.js
+node_modules/
+.next/
+
+# HRM app — generated & local
+hrm_app/backend/var/
+.pytest_cache/
+
+# Scratch / caches
+scratch/
 
 # IDEs
 .vscode/
 .idea/
+
+# Logs
+*.log
