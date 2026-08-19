@@ -10,6 +10,7 @@ from sqlalchemy import (
     Float,
     Integer,
     String,
+    Text,
     UniqueConstraint,
     func,
 )
@@ -71,5 +72,25 @@ class AuditModel(Base):
     action: Mapped[str] = mapped_column(String(40))
     target: Mapped[str] = mapped_column(String(80))
     detail: Mapped[str] = mapped_column(String(400))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now())
+
+
+class AppConfigModel(Base):
+    """Chat-editable settings (key/value), e.g. the punch-merge window."""
+    __tablename__ = "app_config"
+
+    key: Mapped[str] = mapped_column(String(40), primary_key=True)
+    value: Mapped[str] = mapped_column(String(80))
+
+
+class ConversationModel(Base):
+    """Agent chat memory — one row per message in a session (multi-turn context)."""
+    __tablename__ = "conversations"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    session_id: Mapped[str] = mapped_column(String(64), index=True)
+    role: Mapped[str] = mapped_column(String(16))     # user | assistant
+    content: Mapped[str] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now())

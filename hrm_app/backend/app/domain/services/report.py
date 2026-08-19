@@ -4,6 +4,8 @@ a plain-English summary (template-based, no LLM). Pure Python.
 """
 from __future__ import annotations
 
+from dataclasses import dataclass, field
+
 from ..entities import DayVerdict, MonthReport
 from ..value_objects import DayType
 
@@ -58,3 +60,101 @@ def _write_summary(r: MonthReport, flagged: list[DayVerdict]) -> str:
     else:
         parts.append("No problems found.")
     return " ".join(parts)
+
+
+# --- Roster: a one-line-per-employee view of a whole month (agent queries) ---
+@dataclass
+class RosterRow:
+    employee_id: str
+    employee_name: str
+    present_days: int
+    absent_days: int
+    late_days: int
+    total_paid: float
+    total_expected: float
+    flagged_days: int
+    money_at_risk: float
+    status: str          # "OK" or "ISSUES"
+    is_paid: bool
+    ot_hours: float = 0.0
+    total_hours: float = 0.0
+
+
+@dataclass
+class RosterReport:
+    month: str
+    rows: list[RosterRow] = field(default_factory=list)
+
+    def unpaid(self) -> list["RosterRow"]:      # worked but received no pay
+        return [r for r in self.rows if not r.is_paid and r.present_days > 0]
+
+    def paid(self) -> list["RosterRow"]:
+        return [r for r in self.rows if r.is_paid]
+
+    def with_absences(self) -> list["RosterRow"]:
+        return [r for r in self.rows if r.absent_days > 0]
+
+    def with_issues(self) -> list["RosterRow"]:  # rule breaks / ML flags / fines
+        return [r for r in self.rows if r.flagged_days > 0]
+
+
+def build_roster(month: str, reports: list[MonthReport]) -> RosterReport:
+    rows = [
+        RosterRow(
+            employee_id=r.employee_id, employee_name=r.employee_name,
+            present_days=r.present_days, absent_days=r.absent_days,
+            late_days=r.late_days, total_paid=r.total_paid,
+            total_expected=r.total_expected, flagged_days=r.flagged_days,
+            money_at_risk=r.money_at_risk,
+            status="ISSUES" if r.flagged_days else "OK",
+            is_paid=r.total_paid > 0,
+            ot_hours=r.ot_hours,
+            total_hours=r.total_hours,
+        )
+        for r in reports
+    ]
+    return RosterReport(month=month, rows=rows)
+
+
+# --- Payslip: a printable pay statement (base + OT + net) plus audit status ---
+@dataclass
+class PayslipStatement:
+    employee_id: str
+    employee_name: str
+    month: str
+    worked_days: int
+    total_hours: float
+    ot_hours: float
+    base_pay: float
+    ot_pay: float
+    gross_pay: float
+    paid: float
+    flagged_days: int
+    status: str
+    text: str
+
+
+def build_payslip(report: MonthReport, ot_rate: float) -> PayslipStatement:
+    ot_pay = round(report.ot_hours * ot_rate, 2)
+    gross = report.total_expected
+    base_pay = round(gross - ot_pay, 2)
+    status = "OK" if report.flagged_days == 0 else "NEEDS REVIEW"
+    text = "\n".join([
+        f"PAYSLIP — {report.employee_name} ({report.employee_id})",
+        f"Month: {report.month}",
+        f"Worked days: {report.present_days}   "
+        f"Hours: {report.total_hours:.1f} (OT {report.ot_hours:.1f})",
+        f"Base pay ....... ${base_pay:,.2f}",
+        f"Overtime pay ... ${ot_pay:,.2f}",
+        f"Gross pay ...... ${gross:,.2f}",
+        f"Actually paid .. ${report.total_paid:,.2f}",
+        f"Audit: {status}"
+        + (f" ({report.flagged_days} day(s) flagged)" if report.flagged_days else ""),
+    ])
+    return PayslipStatement(
+        employee_id=report.employee_id, employee_name=report.employee_name,
+        month=report.month, worked_days=report.present_days,
+        total_hours=report.total_hours, ot_hours=report.ot_hours,
+        base_pay=base_pay, ot_pay=ot_pay, gross_pay=gross,
+        paid=report.total_paid, flagged_days=report.flagged_days,
+        status=status, text=text)

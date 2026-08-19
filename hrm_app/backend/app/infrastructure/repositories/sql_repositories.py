@@ -13,10 +13,18 @@ from ...domain.entities import AttendanceDay, AuditEntry, Employee, Label
 from ...domain.repositories import (
     AttendanceRepository,
     AuditRepository,
+    ConfigRepository,
     EmployeeRepository,
     LabelRepository,
 )
-from ..db.models import AttendanceModel, AuditModel, EmployeeModel, LabelModel
+from ..db.models import (
+    AppConfigModel,
+    AttendanceModel,
+    AuditModel,
+    ConversationModel,
+    EmployeeModel,
+    LabelModel,
+)
 from .mappers import (
     attendance_to_domain,
     attendance_to_orm,
@@ -161,3 +169,41 @@ class SqlAuditRepository(AuditRepository):
         rows = self._s.scalars(
             select(AuditModel).order_by(AuditModel.id.desc()).limit(limit)).all()
         return [AuditEntry(m.action, m.target, m.detail) for m in rows]
+
+
+class SqlConfigRepository(ConfigRepository):
+    def __init__(self, session: Session) -> None:
+        self._s = session
+
+    def get(self, key: str) -> str | None:
+        m = self._s.get(AppConfigModel, key)
+        return m.value if m else None
+
+    def set(self, key: str, value: str) -> None:
+        self._s.merge(AppConfigModel(key=key, value=value))
+        self._s.commit()
+
+    def all(self) -> dict[str, str]:
+        rows = self._s.scalars(select(AppConfigModel)).all()
+        return {m.key: m.value for m in rows}
+
+
+class SqlConversationStore:
+    """Agent chat memory (user/assistant messages) keyed by session id."""
+
+    def __init__(self, session: Session) -> None:
+        self._s = session
+
+    def load(self, session_id: str, limit: int = 20) -> list[dict]:
+        rows = self._s.scalars(
+            select(ConversationModel)
+            .where(ConversationModel.session_id == session_id)
+            .order_by(ConversationModel.id.desc())
+            .limit(limit)
+        ).all()
+        return [{"role": m.role, "content": m.content} for m in reversed(rows)]
+
+    def append(self, session_id: str, role: str, content: str) -> None:
+        self._s.add(ConversationModel(
+            session_id=session_id, role=role, content=content))
+        self._s.commit()

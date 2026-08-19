@@ -180,3 +180,35 @@ tr.flagged:hover td { background: var(--hover); }
 .chip:hover { background: var(--hover); border-color: var(--ink); }
 .chip-group { font-family: var(--mono); font-size: .68rem; text-transform: uppercase;
   letter-spacing: .06em; color: var(--faint); margin: .4rem .2rem .1rem; width: 100%; }
+
+/* Agent: live status + trace */
+.agent-status { display: flex; align-items: center; gap: .5rem; font-family: var(--mono);
+  font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+.agent-status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
+  animation: pulse 1s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+.trace { margin-top: .55rem; border-top: 1px dashed var(--line); padding-top: .4rem; }
+.trace summary { cursor: pointer; font-family: var(--mono); font-size: .7rem;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--faint); }
+.trace-step { margin-top: .4rem; }
+.trace-step b { font-family: var(--mono); font-size: .72rem; }
+.trace-step pre { white-space: pre-wrap; font-family: var(--mono); font-size: .72rem;
+  color: var(--muted); margin: .2rem 0 0; max-height: 160px; overflow: auto; }
+
+/* Markdown answer body */
+.md { white-space: normal; }
+.md > :first-child { margin-top: 0; }
+.md > :last-child { margin-bottom: 0; }
+.md p { margin: .4rem 0; }
+.md h1, .md h2, .md h3 { font-size: 1rem; margin: .7rem 0 .35rem; letter-spacing: -.01em; }
+.md ul, .md ol { margin: .35rem 0; padding-left: 1.2rem; }
+.md li { margin: .15rem 0; }
+.md code { font-family: var(--mono); font-size: .85em; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 4px; padding: .05rem .3rem; }
+.md pre { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: .6rem .7rem; overflow-x: auto; }
+.md pre code { background: none; border: none; padding: 0; }
+.md table { width: auto; margin: .5rem 0; border: 1px solid var(--line); }
+.md th, .md td { padding: .35rem .6rem; border-bottom: 1px solid var(--line); font-size: .85rem; }
+.md blockquote { border-left: 3px solid var(--line-strong); margin: .4rem 0;
+  padding-left: .7rem; color: var(--muted); }

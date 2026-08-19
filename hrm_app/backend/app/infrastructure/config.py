@@ -26,9 +26,11 @@ class Settings(BaseSettings):
     api_port: int = 8010
 
     # Local LLM (Ollama) — free natural-language understanding for the chat.
+    # llama3.1:8b plans messy, multi-step requests better than 3b; set
+    # OLLAMA_MODEL=llama3.2:3b in .env to fall back to the faster small model.
     use_llm: bool = True
     ollama_url: str = "http://localhost:11434"
-    ollama_model: str = "llama3.2:3b"
+    ollama_model: str = "llama3.1:8b"
 
     # Real biometric import (ZKTeco BioTime SQL dump) + the punch-merge rule.
     punch_merge_seconds: int = 60          # punches within this window count as one

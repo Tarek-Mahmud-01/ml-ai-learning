@@ -73,3 +73,16 @@ class AuditRepository(ABC):
 
     @abstractmethod
     def list_recent(self, limit: int = 20) -> list[AuditEntry]: ...
+
+
+class ConfigRepository(ABC):
+    """Chat-editable key/value settings (e.g. punch-merge window)."""
+
+    @abstractmethod
+    def get(self, key: str) -> str | None: ...
+
+    @abstractmethod
+    def set(self, key: str, value: str) -> None: ...
+
+    @abstractmethod
+    def all(self) -> dict[str, str]: ...

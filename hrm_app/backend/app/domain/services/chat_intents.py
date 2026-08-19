@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
+from datetime import date
 
 _WORDNUM = {
     "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
@@ -28,6 +29,13 @@ KNOWN_KINDS = {
     "list_employees", "insert_attendance", "edit_attendance",
     "delete_attendance", "check_month", "check_range", "show_day",
     "import_data",
+    # Phase 4 — agent tools (aggregate queries, generate, payslip, config)
+    "check_all", "list_unpaid", "list_absent", "list_issues", "list_paid",
+    "payslip", "generate_employees", "generate_salary", "configure",
+    # Phase 5 — employee search
+    "find_employee",
+    # Phase 6 — attendance listing
+    "list_attendance",
 }
 
 # ---- recognisers -----------------------------------------------------------
@@ -141,6 +149,32 @@ def _month(low: str) -> tuple[int, int] | None:
     return None
 
 
+def _shift_month(year: int, month: int, back: int) -> tuple[int, int]:
+    total = year * 12 + (month - 1) - back
+    return total // 12, total % 12 + 1
+
+
+def resolve_month(today: date, phrase: str) -> tuple[int, int]:
+    """
+    Turn a (possibly messy) phrase into (year, month), relative to `today`.
+    "last month" -> previous month; "N months ago" -> back N; an explicit
+    month name / YYYY-MM wins when present; otherwise the current month.
+    The clock is passed in so the domain stays free of wall-clock calls.
+    """
+    low = (phrase or "").lower()
+    if any(k in low for k in ("last month", "previous month", "past month")):
+        return _shift_month(today.year, today.month, 1)
+    ago = re.search(r"(\d+)\s+months?\s+ago", low)
+    if ago:
+        return _shift_month(today.year, today.month, int(ago.group(1)))
+    if "this month" in low or "current month" in low:
+        return today.year, today.month
+    explicit = _month(low)
+    if explicit:
+        return explicit
+    return today.year, today.month
+
+
 def _value_after_to(text: str) -> str | None:
     parts = re.split(r"\bto\b", text, flags=re.IGNORECASE)
     if len(parts) >= 2:
@@ -188,6 +222,21 @@ def _att_field(low: str) -> str | None:
     return None
 
 
+def _parse_configure(low: str) -> "Intent":
+    """Map a 'set merge window to 90' style message to a configure intent."""
+    m = re.search(r"(-?\d+(?:\.\d+)?)", low)
+    value = m.group(1) if m else None
+    if "merge" in low:
+        key = "merge_seconds"
+    elif "ot" in low or "overtime" in low:
+        key = "default_ot_rate"
+    elif "tolerance" in low:
+        key = "tolerance"
+    else:
+        key = "default_base_rate"
+    return Intent("configure", {"key": key, "value": value})
+
+
 def _import_slots(low: str) -> dict:
     """Optional slots on an import message: merge window + keep-demo flag."""
     p: dict = {}
@@ -210,6 +259,13 @@ def parse(message: str) -> Intent:
 
     if not low or low in ("help", "?", "hi", "hello", "commands"):
         return Intent("help")
+
+    # ----- configuration (global settings, no employee id) -----
+    if emp is None and any(
+        w in low for w in ("merge window", "merge second", "merge to", "punch merge",
+                           "default rate", "default base", "default ot", "tolerance")
+    ) and any(v in low for v in ("set", "change", "configure", "update", "make")):
+        return _parse_configure(low)
 
     # ----- deletes (need confirm) -----
     if "delete" in low and "employee" in low and emp:
@@ -272,6 +328,40 @@ def parse(message: str) -> Intent:
         return Intent("show_employee", {"employee_id": emp})
     if "list" in low and ("employee" in low or "staff" in low):
         return Intent("list_employees")
+
+    # ----- list an employee's attendance -----
+    if ("attendance" in low or "attendce" in low or "attehnd" in low or "attend" in low) \
+            and any(w in low for w in ("show", "list", "view", "last", "recent")) \
+            and not any(w in low for w in ("add", "insert", "delete", "set ")):
+        return Intent("list_attendance", {"employee_id": emp, "query": low})
+
+    # ----- find / search an employee -----
+    if any(w in low for w in ("find", "search", "lookup", "look up", "who is")) \
+            and any(w in low for w in ("employee", "emp", "staff", "worker", "name")):
+        return Intent("find_employee", {"query": low})
+
+    # ----- roster queries across ALL employees + generate + payslip -----
+    if re.search(r"\bunpaid\b", low) or "not paid" in low:
+        return Intent("list_unpaid", {"month_phrase": low})
+    if re.search(r"\babsent", low) and any(w in low for w in ("list", "show", "who", "how many")):
+        return Intent("list_absent", {"month_phrase": low})
+    if any(w in low for w in ("issue", "problem", "fine", "rule break", "broke", "flag")) \
+            and any(w in low for w in ("list", "show", "who", "report", "find")):
+        return Intent("list_issues", {"month_phrase": low})
+    if re.search(r"\bpaid\b", low) and "list" in low:
+        return Intent("list_paid", {"month_phrase": low})
+    if any(w in low for w in ("check all", "check everyone", "everyone", "all employee",
+                             "every employee", "all staff", "whole team", "all payslip")):
+        return Intent("check_all", {"month_phrase": low})
+    if "payslip" in low or "pay slip" in low or "pay-slip" in low:
+        return Intent("payslip", {"employee_id": emp, "month_phrase": low})
+    if any(w in low for w in ("generate", "make", "create")) \
+            and any(w in low for w in ("salary", "salery", "payroll")):
+        n = _last_number(low)
+        return Intent("generate_salary", {"count": int(n) if n else 5, "month_phrase": low})
+    if any(w in low for w in ("make", "create", "generate")) \
+            and re.search(r"employe", low) and _last_number(low) is not None:
+        return Intent("generate_employees", {"count": int(_last_number(low))})
 
     # ----- import real biometric data -----
     if "import" in low and any(

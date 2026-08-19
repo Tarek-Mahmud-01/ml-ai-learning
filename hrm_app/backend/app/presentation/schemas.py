@@ -95,6 +95,7 @@ class ImportResult(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+    session_id: str | None = None      # agent conversation memory
 
 
 class ChatReplyOut(BaseModel):

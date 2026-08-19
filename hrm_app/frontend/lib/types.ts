@@ -77,3 +77,18 @@ export interface ChatReply {
   kind?: string | null;
   changed?: boolean;
 }
+
+export interface TraceStep {
+  name: string;
+  result: string;
+}
+
+export interface AgentEvent {
+  type: "status" | "tool" | "answer" | "done";
+  text?: string;
+  name?: string;
+  result?: string;
+  session_id?: string;
+  changed?: boolean;
+  trace?: TraceStep[];
+}

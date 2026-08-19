@@ -1,5 +1,6 @@
 // The ONLY file that talks to the backend. Components never fetch directly.
 import type {
+  AgentEvent,
   ChatReply,
   Employee,
   ImportResult,
@@ -36,4 +37,37 @@ export const api = {
   importReal: () => jpost<ImportResult>("/admin/import", { replace: true }),
   train: () => jpost<TrainResult>("/admin/train"),
   chat: (message: string) => jpost<ChatReply>("/chat", { message }),
+
+  // Streaming agent: calls onEvent for each SSE event (status/tool/answer/done).
+  async chatStream(
+    message: string,
+    sessionId: string | null,
+    onEvent: (ev: AgentEvent) => void
+  ): Promise<void> {
+    const res = await fetch(`${BASE}/chat/stream`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message, session_id: sessionId }),
+    });
+    if (!res.body) throw new Error("No response stream");
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const chunks = buffer.split("\n\n");
+      buffer = chunks.pop() || "";
+      for (const chunk of chunks) {
+        const line = chunk.split("\n").find((l) => l.startsWith("data: "));
+        if (!line) continue;
+        try {
+          onEvent(JSON.parse(line.slice(6)) as AgentEvent);
+        } catch {
+          /* ignore malformed event */
+        }
+      }
+    }
+  },
 };

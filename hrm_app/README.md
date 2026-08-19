@@ -173,8 +173,68 @@ midnight may split across two calendar dates.
 > ⚠️ Running the demo-seeding tests re-seeds the DB and **wipes imported real data** —
 > just re-import from the dashboard/chat to restore it.
 
+## Phase 4 — Agentic "Power Chat" ✅ (built)
+The chat is now a **decision agent**. One (even messy) message → a local LLM plans an
+ordered list of safe tool-calls → the app runs them → one clean reply. It handles HRM
+Q&A *and* operations, and multi-step requests in a single message.
+
+Examples (type them in `/chat`):
+- "last month unpaid list" · "last month absent list" · "who has issues last month"
+- "make 5 employees salary last month and check payslips, show the issue list and paid list"
+- "payslip E100017 last month" · "check all last month"
+- "set merge window to 90 seconds" (configure by chat, saved)
+
+**How it stays safe & reliable:** the LLM only picks tools from a whitelist (`KNOWN_KINDS`)
+— never raw SQL/code. Relative dates ("last month") resolve against the system clock via
+`resolve_month`. Deletes are never chained and still need `confirm`. If the LLM is off, it
+falls back to the single-intent regex parser.
+
+**New tools:** `check_all`, `list_unpaid` / `list_absent` / `list_issues` / `list_paid`
+(filtered views of one monthly roster), `payslip`, `generate_employees`, `generate_salary`
+(additive demo staff in the `E9xxx` id range), `configure`. New table `app_config`.
+
+**Model:** defaults to **llama3.1:8b** (better at messy multi-step planning). Set
+`OLLAMA_MODEL=llama3.2:3b` in `.env` for the faster small model. First call warms the model
+(~90s); later calls ~20-30s on CPU.
+
+Notes for real biometric data: it records only punches, so **absences are always 0** (the
+device logs who came, not who didn't), and most staff show "issues" (missing-punch days +
+ML-flagged unusual hours). Money-at-risk is $0 until real pay is entered (baseline =
+expected). Re-run "import real data" to reset to pure real staff.
+
+## Phase 6 — Full tool-calling AGENT ✅ (built)
+The chat is now a real **agent**, not a pre-defined command list. It runs a
+reason → act → observe loop using the local model's **native tool-calling**
+(`llama3.1:8b` via Ollama): it decides which tools to call, runs them, sees the
+results, and repeats until it can answer — then replies in **Markdown**, streamed
+live so it feels like ChatGPT.
+
+Highlights:
+- **26-tool registry** (`application/agent/tools.py`) — every operation is a tool the
+  model can call and combine. Tools delegate to the existing `ChatAssistant` executor
+  (one dispatch, no duplication).
+- **`query_data`** — a safe, structured query (filter/sort/limit over the month roster)
+  so it answers open-ended questions like *"who worked the most overtime last month? top 3"*
+  with **no new code and no raw SQL**.
+- **Conversation memory** — `conversations` table keyed by `session_id`; multi-turn context.
+- **Streaming** — `POST /chat/stream` (SSE: `status` → `tool` → `answer` → `done`); the UI
+  shows live progress then **types the answer out**. The old `POST /chat` stays as a
+  non-stream fallback (the agent also falls back to it if tool-calling errors).
+- **Safety** — tools are the only actions (never raw SQL/code); writes audited; destructive
+  tools (`delete_*`) run only after you say **confirm**; a `MAX_STEPS` loop guard.
+
+Try in `/chat`: *"who worked the most overtime last month? top 3"*, *"find employee 17"*,
+*"payslip E100017 last month"*, *"last month unpaid list"*.
+
+**Model:** `settings.ollama_model` defaults to `llama3.1:8b` (needed for tool-calling).
+**Honest limits:** the local 8B model is ~60–100s/turn on CPU (two calls: pick tool +
+write answer), its temporal follow-ups ("the month before that") can miss, and it can
+occasionally mis-argue a tool — hence argument-hardening, a "never invent data" instruction,
+and the plan-and-execute fallback.
+
 ### Still not built (future)
-Login/roles (RBAC) + sensitive-field masking. Night-shift midnight pairing.
+Login/roles (RBAC) + sensitive-field masking. Night-shift midnight pairing. Real token
+streaming (today the answer arrives whole and the UI simulates typing).
 
 ## Note
 `next@14.2.15` prints a security-upgrade notice. For this local learning app it's
