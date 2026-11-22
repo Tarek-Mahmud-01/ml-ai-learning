@@ -19,10 +19,10 @@
 - ⌨️ **Practice:** NumPy — create vectors/matrices, do dot products, matrix multiply by hand then verify with `np.dot`.
 - 🛠️ **Project:** Write a function that multiplies two matrices *manually* (nested loops), compare to NumPy. Understand a neural layer = matrix multiply.
 
-### ☐ Day 2 — Calculus & Gradients
-- 🧠 **Theory:** Derivatives, chain rule, partial derivatives, what a gradient is. Watch 3Blue1Brown "Neural Networks" ch on backprop.
-- ⌨️ **Practice:** Compute derivatives by hand for simple functions (x², x³, sin). Plot a function and its slope in matplotlib.
-- 🛠️ **Project:** Write a function that numerically estimates the derivative of any function at a point.
+### ✅ Day 2 — Calculus & Gradients — DONE (code & notes complete)
+- 🧠 **Theory:** Derivatives, chain rule, partial derivatives, what a gradient is. See [notes/advanced_day2_calculus.md](../advanced_day2_calculus.md).
+- ⌨️ **Practice:** Implemented central-difference numerical derivative, chain rule, and PyTorch autograd in [advanced_day2_calculus.py](../../advanced_day2_calculus.py).
+- 🛠️ **Project:** Function to numerically estimate any derivative, verify gradients, and plot tangent slope in [learn_charts/day2_calculus_tangent.png](../../learn_charts/day2_calculus_tangent.png).
 
 ### ☐ Day 3 — Gradient Descent from Scratch ⭐
 - 🧠 **Theory:** Loss functions (MSE), how gradient descent minimizes loss step by step. Learning rate.

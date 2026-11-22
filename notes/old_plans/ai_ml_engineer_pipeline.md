@@ -10,7 +10,7 @@
 
 **Companion notes (reuse, don't duplicate):**
 - Deep theory per topic → [advanced_ai_roadmap.md](advanced_ai_roadmap.md)
-- Exact libraries + install order → [tools_and_libraries.md](tools_and_libraries.md)
+- Exact libraries + install order → [tools_and_libraries.md](../tools_and_libraries.md)
 - A day-by-day schedule option → [daily_plan_advanced.md](daily_plan_advanced.md)
 
 ---
@@ -527,7 +527,7 @@ chapters so the knowledge locks in.
 - **NLP/LLMs:** **Hugging Face** free course · **Anthropic Claude docs** · LangChain/LlamaIndex docs.
 - **Paper:** *Attention Is All You Need* (skim after Ch 16 theory).
 - **Your own notes:** [advanced_ai_roadmap.md](advanced_ai_roadmap.md) (theory depth) ·
-  [tools_and_libraries.md](tools_and_libraries.md) (install order per stage).
+  [tools_and_libraries.md](../tools_and_libraries.md) (install order per stage).
 
 ---
 
