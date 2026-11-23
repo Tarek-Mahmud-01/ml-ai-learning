@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part5_evaluation_special_ml.md) · [next part →](part7_nlp.md) · [Appendices](appendix.md)
 
+
 > **Days 48–62 · Category: neural networks (supervised, deep) · Levels: 1 → 3 in every chapter**
 > **You will be able to:** build a neural network by hand (forward, loss, backprop), then in PyTorch and Keras; train it well (optimizers, regularization, debugging); and apply CNNs, transfer learning and detection to images.
 > **Math you meet here (just-in-time):** activation derivatives (Day 49) · loss functions (50) · backprop = chain rule on matrices (51) · initialization (52) · momentum / Adam moments (55) · BatchNorm (56) · convolution (60) · IoU, mAP (62).

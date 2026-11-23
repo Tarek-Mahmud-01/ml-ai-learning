@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part6_deep_learning_vision.md) · [next part →](part8_reinforcement_learning.md) · [Appendices](appendix.md)
 
+
 > **Days 63–73 · Category: deep learning for text · Levels: 1 → 3 in every chapter**
 > **You will be able to:** clean and represent text (BoW, TF-IDF, Vector Space Model, WordNet), use and train embeddings, explain RNN / LSTM / GRU, derive attention, build a Transformer from scratch, and fine-tune BERT with the right NLP metrics.
 > **Math you meet here (just-in-time):** TF-IDF and cosine (Day 64) · skip-gram softmax (65) · back-prop through time (66) · LSTM gates (67) · attention weights (68) · `softmax(QKᵀ/√d)V` (69) · BLEU, ROUGE, perplexity (72).

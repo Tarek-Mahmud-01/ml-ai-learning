@@ -1,8 +1,8 @@
-# 📘 The AI & ML Engineer Book — 120 core days + 60 shelf days
+# 📘 The AI & ML Engineer Book — 134 core days + 62 shelf days
 
 > **For:** a learner who wants to become an advanced **AI / ML Engineer** — with **Supervised, Unsupervised, Deep Learning, NLP, Reinforcement Learning, Generative AI, Agentic AI** and **Software Engineering with AI/ML**.
-> **How it is built:** like a book. **Parts** = categories (Supervised, Unsupervised, …). **Chapters** = one algorithm family. **Levels** = Beginner → Intermediate → Advanced *inside every chapter*. The **Day 1–120 schedule** at the bottom tells you what to read each day.
-> **Pace:** 3–4 hours a day. Core path = Days 1–120 (job-ready). Shelf = Days 121–180 (optional, "be the best").
+> **How it is built:** like a book. **Parts** = categories (Supervised, Unsupervised, …). **Chapters** = one algorithm family. **Levels** = Beginner → Intermediate → Advanced *inside every chapter*. The **Day 1–134 schedule** at the bottom tells you what to read each day.
+> **Pace:** 3–4 hours a day. Core path = Days 1–134 (job-ready). Shelf = Days 135–196 (optional, "be the best").
 > **Old plans** are archived in [../old_plans/](../old_plans/). **Your class notes** (.docx) are in [../course_notes/](../course_notes/). **Libraries:** install each one when its Part arrives (`pip install` as you go).
 
 ---
@@ -31,7 +31,7 @@ Every day ends with **✅ Done when…** — a check you can really test. Days t
 7. Code in `plan120/dayNNN_topic.py`, one git commit per day: `Day N: topic`.
 
 ### Legend
-`★` core (Days 1–120) · `☆` shelf (Days 121–180) · `L1 / L2 / L3` level · `CP` checkpoint · 📘 = your class notes cover it.
+`★` core (Days 1–134) · `☆` shelf (Days 135–196) · `L1 / L2 / L3` level · `CP` checkpoint · 📘 = your class notes cover it.
 
 ### Datasets (offline, built into scikit-learn) and your own data
 `load_diabetes` (regression) · `load_breast_cancer` (binary) · `load_wine`, `load_digits` (multi-class) · `make_moons`, `make_blobs` (clusters) · **your own:** `data/` sales data and the HRM payslip data in `hrm_detective/` and `hrm_app/`.
@@ -50,18 +50,20 @@ Every day ends with **✅ Done when…** — a check you can really test. Days t
 | **PART VI — Deep Learning and Computer Vision** | [part6_deep_learning_vision.md](part6_deep_learning_vision.md) | Ch 28 — Neural-network foundations (by hand) (D48–52)<br>Ch 29 — PyTorch and the training loop (D53–54)<br>Ch 30 — Training better: optimizers, regularization, debugging (D55–57)<br>Ch 31 — Keras / TensorFlow and tabular deep learning (D58–59)<br>Ch 32 — Computer vision (D60–62) | 48–62 |
 | **PART VII — Natural Language Processing (NLP)** | [part7_nlp.md](part7_nlp.md) | Ch 33 — Text basics: cleaning, bag-of-words, TF-IDF, vector space (D63–64)<br>Ch 34 — Word embeddings (D65)<br>Ch 35 — Sequence models: RNN, LSTM, GRU, seq2seq, attention (D66–68)<br>Ch 36 — Transformers, BERT and fine-tuning (D69–73) | 63–73 |
 | **PART VIII — Reinforcement Learning** | [part8_reinforcement_learning.md](part8_reinforcement_learning.md) | Ch 37 — RL basics: MDP, Bellman, Q-learning (D74)<br>Ch 38 — Deep RL: DQN, policy gradient, PPO (D75)<br>Ch 39 — RL for language models (D76) | 74–76 |
-| **PART IX — Generative AI and Large Language Models** | [part9_generative_ai.md](part9_generative_ai.md) | Ch 40 — How LLMs work + a tiny GPT (D77–79)<br>Ch 41 — Using LLMs: APIs and prompt engineering (D80–81)<br>Ch 42 — Retrieval-Augmented Generation (RAG) (D82–85)<br>Ch 43 — Fine-tuning LLMs (D86–87)<br>Ch 44 — Image, audio and multimodal generation (D88)<br>Ch 45 — Safety, evaluation, cost and the GenAI project (D89–90) | 77–90 |
-| **PART X — Agentic AI** | [part10_agentic_ai.md](part10_agentic_ai.md) | Ch 46 — Agent fundamentals: tool calling, planning, memory (D91–93)<br>Ch 47 — Frameworks and protocols: LangChain, LangGraph, MCP (D94–95)<br>Ch 48 — Multi-agent systems (D96)<br>Ch 49 — Agent evaluation, guardrails and safety (D97)<br>Ch 50 — Build: the HRM payslip agent and an end-to-end agent (D98–99) | 91–99 |
-| **PART XI — Software Engineering with AI/ML (MLOps)** | [part11_software_engineering_mlops.md](part11_software_engineering_mlops.md) | Ch 51 — Serving a model and securing the API (D100–101)<br>Ch 52 — Data and storage for AI apps (D102)<br>Ch 53 — Packaging and delivery: Docker, Git, CI/CD, testing (D103–105)<br>Ch 54 — Async work, MLOps and monitoring (D106–108)<br>Ch 55 — Big data and cloud (D109–111) | 100–111 |
-| **PART XII — System Design, Interview and Capstone** | [part12_design_interview_capstone.md](part12_design_interview_capstone.md) | Ch 56 — ML and LLM system design (D112–113)<br>Ch 57 — Capstone: Intelligent HRM Assistant (D114–118)<br>Ch 58 — Interview and portfolio (D119–120) | 112–120 |
-| **PART XIII — Advanced Shelf ☆ (optional, Days 121–180)** | [part13_advanced_shelf.md](part13_advanced_shelf.md) | Ch S1 — Classical and statistical machine learning (Days 121–133) (D121–133)<br>Ch S2 — Unsupervised learning and optimization (Days 134–140) (D134–140)<br>Ch S3 — Deep-learning extensions (Days 141–149) (D141–149)<br>Ch S4 — NLP and LLM extensions (Days 150–159) (D150–159)<br>Ch S5 — Reinforcement-learning and agent extensions (Days 160–166) (D160–166)<br>Ch S6 — Engineering and career (Days 167–180) (D167–180) | 121–180 |
+| **PART IX — Generative AI and Large Language Models: foundations** | [part9_generative_ai.md](part9_generative_ai.md) | Ch 40 — How LLMs work + a tiny GPT (D77–79)<br>Ch 41 — Using LLMs: APIs and prompt engineering (D80–81) | 77–81 |
+| **PART X — Embeddings, Vector Databases, Retrievers and Augmentation (RAG)** | [part10_embeddings_vector_retrieval_rag.md](part10_embeddings_vector_retrieval_rag.md) | Ch 42 — Vectorization and embeddings (D82–83)<br>Ch 43 — Vector databases (D84–86)<br>Ch 44 — Retrievers (D87–89)<br>Ch 45 — Augmentation and generation (RAG) (D90–93) | 82–93 |
+| **PART XI — Customizing and Shipping Generative AI: fine-tuning, image / audio generation, safety** | [part11_llm_customization.md](part11_llm_customization.md) | Ch 46 — Fine-tuning LLMs (D94–95)<br>Ch 47 — Image, audio and multimodal generation (D96)<br>Ch 48 — Safety, evaluation, cost and the GenAI project (D97–98) | 94–98 |
+| **PART XII — Agentic AI** | [part12_agentic_ai.md](part12_agentic_ai.md) | Ch 49 — Agent fundamentals: tool calling, planning, memory (D99–101)<br>Ch 50 — Frameworks and protocols: LangChain, LangGraph, MCP (D102–103)<br>Ch 51 — Agent evaluation, guardrails and safety (D104)<br>Ch 52 — Multi-agent systems (D105–109)<br>Ch 53 — Build: the HRM payslip agent and an end-to-end agent (D110–111) | 99–111 |
+| **PART XIII — Software Engineering with AI/ML (MLOps)** | [part13_software_engineering_mlops.md](part13_software_engineering_mlops.md) | Ch 54 — Serving a model and securing the API (D112–113)<br>Ch 55 — Production Python for AI projects (D114)<br>Ch 56 — Data and storage for AI apps (D115)<br>Ch 57 — Packaging and delivery: Docker, Git, CI/CD, testing (D116–118)<br>Ch 58 — Async work and caching (D119)<br>Ch 59 — Front-end for AI apps (D120)<br>Ch 60 — Experiment tracking, reproducibility and monitoring (D121–122)<br>Ch 61 — Big data and cloud (D123–125) | 112–125 |
+| **PART XIV — System Design, Interview and Capstone** | [part14_design_interview_capstone.md](part14_design_interview_capstone.md) | Ch 62 — ML and LLM system design (D126–127)<br>Ch 63 — Capstone: Intelligent HRM Assistant (D128–132)<br>Ch 64 — Interview and portfolio (D133–134) | 126–134 |
+| **PART XV — Advanced Shelf ☆ (optional, Days 135–196)** | [part15_advanced_shelf.md](part15_advanced_shelf.md) | Ch S1 — Classical and statistical machine learning (D135–147)<br>Ch S2 — Unsupervised learning and optimization (D148–154)<br>Ch S3 — Deep-learning extensions (D155–163)<br>Ch S4 — NLP and LLM extensions (D164–173)<br>Ch S5 — Reinforcement-learning and agent extensions (D174–180)<br>Ch S6 — Engineering and career (D181–196) | 135–196 |
 | **Appendices** (math map · data-prep map · algorithm cheat-sheet · gap audit · trackers · resources) | [appendix.md](appendix.md) | A–F | — |
 
 ---
 
-## 🗓️ Day 1–180 schedule
+## 🗓️ Day 1–196 schedule
 
-**Core path = Days 1–120.** Shelf ☆ = Days 121–180 (optional). Click a day to open it.
+**Core path = Days 1–134.** Shelf ☆ = Days 135–196 (optional). Click a day to open it.
 
 | Day | Part | Chapter | Level | Topic |
 |---|---|---|---|---|
@@ -144,107 +146,123 @@ Every day ends with **✅ Done when…** — a check you can really test. Days t
 | [77](part9_generative_ai.md#day-77) | IX · Generative AI and Large Language Models | 40 · How LLMs work + a tiny GPT | L1 | How an LLM really works |
 | [78](part9_generative_ai.md#day-78) | IX · Generative AI and Large Language Models | 40 · How LLMs work + a tiny GPT | L2 | Tiny GPT, part 1: attention block |
 | [79](part9_generative_ai.md#day-79) | IX · Generative AI and Large Language Models | 40 · How LLMs work + a tiny GPT | L3 | Tiny GPT, part 2: train, sample, decode |
-| [80](part9_generative_ai.md#day-80) | IX · Generative AI and Large Language Models | 41 · Using LLMs: APIs and prompt engineering | L1–2 | LLM APIs: messages, streaming, cost |
+| [80](part9_generative_ai.md#day-80) | IX · Generative AI and Large Language Models | 41 · Using LLMs: APIs and prompt engineering | L1–2 | LLM APIs and local models: messages, streaming, cost |
 | [81](part9_generative_ai.md#day-81) | IX · Generative AI and Large Language Models | 41 · Using LLMs: APIs and prompt engineering | L3 | Prompt engineering & structured output |
-| [82](part9_generative_ai.md#day-82) | IX · Generative AI and Large Language Models | 42 · Retrieval-Augmented Generation (RAG) | L1 | Embeddings & vector databases |
-| [83](part9_generative_ai.md#day-83) | IX · Generative AI and Large Language Models | 42 · Retrieval-Augmented Generation (RAG) | L2 | RAG, version 1 |
-| [84](part9_generative_ai.md#day-84) | IX · Generative AI and Large Language Models | 42 · Retrieval-Augmented Generation (RAG) | L2 | RAG, version 2: hybrid search, rerank, citations |
-| [85](part9_generative_ai.md#day-85) | IX · Generative AI and Large Language Models | 42 · Retrieval-Augmented Generation (RAG) | L3 | RAG evaluation & improvement |
-| [86](part9_generative_ai.md#day-86) | IX · Generative AI and Large Language Models | 43 · Fine-tuning LLMs | L1–2 | Fine-tuning theory: SFT, LoRA, QLoRA |
-| [87](part9_generative_ai.md#day-87) | IX · Generative AI and Large Language Models | 43 · Fine-tuning LLMs | L3 | LoRA fine-tuning project |
-| [88](part9_generative_ai.md#day-88) | IX · Generative AI and Large Language Models | 44 · Image, audio and multimodal generation | L1–3 | Image generation, multimodal & speech |
-| [89](part9_generative_ai.md#day-89) | IX · Generative AI and Large Language Models | 45 · Safety, evaluation, cost and the GenAI project | L2 | LLM safety, evaluation, cost & latency |
-| [90](part9_generative_ai.md#day-90) | IX · Generative AI and Large Language Models | 45 · Safety, evaluation, cost and the GenAI project | L3 | GenAI project |
-| [91](part10_agentic_ai.md#day-91) | X · Agentic AI | 46 · Agent fundamentals: tool calling, planning, memory | L1 | Tool calling & the agent loop (no framework) |
-| [92](part10_agentic_ai.md#day-92) | X · Agentic AI | 46 · Agent fundamentals: tool calling, planning, memory | L2 | ReAct, planning & task decomposition |
-| [93](part10_agentic_ai.md#day-93) | X · Agentic AI | 46 · Agent fundamentals: tool calling, planning, memory | L3 | Memory & context engineering |
-| [94](part10_agentic_ai.md#day-94) | X · Agentic AI | 47 · Frameworks and protocols: LangChain, LangGraph, MCP | L2 | LangChain & LangGraph |
-| [95](part10_agentic_ai.md#day-95) | X · Agentic AI | 47 · Frameworks and protocols: LangChain, LangGraph, MCP | L3 | MCP: Model Context Protocol |
-| [96](part10_agentic_ai.md#day-96) | X · Agentic AI | 48 · Multi-agent systems | L1–3 | Multi-agent systems |
-| [97](part10_agentic_ai.md#day-97) | X · Agentic AI | 49 · Agent evaluation, guardrails and safety | L1–3 | Agent evaluation, guardrails & safety |
-| [98](part10_agentic_ai.md#day-98) | X · Agentic AI | 50 · Build: the HRM payslip agent and an end-to-end agent | L3 | Build: the HRM payslip agent |
-| [99](part10_agentic_ai.md#day-99) | X · Agentic AI | 50 · Build: the HRM payslip agent and an end-to-end agent | L3 | Agent project |
-| [100](part11_software_engineering_mlops.md#day-100) | XI · Software Engineering with AI/ML (MLOps) | 51 · Serving a model and securing the API | L1–2 | Serve a model with FastAPI |
-| [101](part11_software_engineering_mlops.md#day-101) | XI · Software Engineering with AI/ML (MLOps) | 51 · Serving a model and securing the API | L3 | API security: auth, rate limits, secrets |
-| [102](part11_software_engineering_mlops.md#day-102) | XI · Software Engineering with AI/ML (MLOps) | 52 · Data and storage for AI apps | L1–3 | Databases inside AI apps (PostgreSQL, pgvector) |
-| [103](part11_software_engineering_mlops.md#day-103) | XI · Software Engineering with AI/ML (MLOps) | 53 · Packaging and delivery: Docker, Git, CI/CD, testing | L1 | Docker & docker-compose |
-| [104](part11_software_engineering_mlops.md#day-104) | XI · Software Engineering with AI/ML (MLOps) | 53 · Packaging and delivery: Docker, Git, CI/CD, testing | L2 | Git workflow & CI/CD |
-| [105](part11_software_engineering_mlops.md#day-105) | XI · Software Engineering with AI/ML (MLOps) | 53 · Packaging and delivery: Docker, Git, CI/CD, testing | L3 | Testing ML & LLM code |
-| [106](part11_software_engineering_mlops.md#day-106) | XI · Software Engineering with AI/ML (MLOps) | 54 · Async work, MLOps and monitoring | L1–2 | Async work: Redis, Celery, caching |
-| [107](part11_software_engineering_mlops.md#day-107) | XI · Software Engineering with AI/ML (MLOps) | 54 · Async work, MLOps and monitoring | L2 | MLflow, DVC & reproducibility |
-| [108](part11_software_engineering_mlops.md#day-108) | XI · Software Engineering with AI/ML (MLOps) | 54 · Async work, MLOps and monitoring | L3 | Monitoring, drift & LLM tracing |
-| [109](part11_software_engineering_mlops.md#day-109) | XI · Software Engineering with AI/ML (MLOps) | 55 · Big data and cloud | L2 | PySpark, part 1 |
-| [110](part11_software_engineering_mlops.md#day-110) | XI · Software Engineering with AI/ML (MLOps) | 55 · Big data and cloud | L2 | PySpark, part 2 |
-| [111](part11_software_engineering_mlops.md#day-111) | XI · Software Engineering with AI/ML (MLOps) | 55 · Big data and cloud | L3 | Cloud deploy |
-| [112](part12_design_interview_capstone.md#day-112) | XII · System Design, Interview and Capstone | 56 · ML and LLM system design | L1–2 | ML system design, part 1 |
-| [113](part12_design_interview_capstone.md#day-113) | XII · System Design, Interview and Capstone | 56 · ML and LLM system design | L3 | ML / LLM system design, part 2 + the design doc |
-| [114](part12_design_interview_capstone.md#day-114) | XII · System Design, Interview and Capstone | 57 · Capstone: Intelligent HRM Assistant | L1 | Capstone design: **Intelligent HRM Assistant** |
-| [115](part12_design_interview_capstone.md#day-115) | XII · System Design, Interview and Capstone | 57 · Capstone: Intelligent HRM Assistant | L2 | Capstone build 1: model + RAG |
-| [116](part12_design_interview_capstone.md#day-116) | XII · System Design, Interview and Capstone | 57 · Capstone: Intelligent HRM Assistant | L2 | Capstone build 2: agent + API + UI |
-| [117](part12_design_interview_capstone.md#day-117) | XII · System Design, Interview and Capstone | 57 · Capstone: Intelligent HRM Assistant | L3 | Capstone build 3: ship it |
-| [118](part12_design_interview_capstone.md#day-118) | XII · System Design, Interview and Capstone | 57 · Capstone: Intelligent HRM Assistant | L3 | Polish & document |
-| [119](part12_design_interview_capstone.md#day-119) | XII · System Design, Interview and Capstone | 58 · Interview and portfolio | L3 | Full mock interview |
-| [120](part12_design_interview_capstone.md#day-120) | XII · System Design, Interview and Capstone | 58 · Interview and portfolio | L3 | Portfolio & **gap audit** |
-| [121](part13_advanced_shelf.md#day-121) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Robust & quantile regression ☆ |
-| [122](part13_advanced_shelf.md#day-122) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Generalized linear models (GLM) and GAMs ☆ |
-| [123](part13_advanced_shelf.md#day-123) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Bayesian linear regression (MLE vs MAP vs full Bayes) ☆ |
-| [124](part13_advanced_shelf.md#day-124) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Gaussian processes ☆ |
-| [125](part13_advanced_shelf.md#day-125) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Kernel ridge regression and kernel PCA ☆ |
-| [126](part13_advanced_shelf.md#day-126) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Ordinal, multi-label and cost-sensitive classification ☆ |
-| [127](part13_advanced_shelf.md#day-127) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Conformal prediction: honest uncertainty ☆ |
-| [128](part13_advanced_shelf.md#day-128) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Survival analysis (employee attrition, churn) ☆ |
-| [129](part13_advanced_shelf.md#day-129) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Semi-supervised and active learning ☆ |
-| [130](part13_advanced_shelf.md#day-130) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Online / streaming learning and concept drift ☆ |
-| [131](part13_advanced_shelf.md#day-131) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Hidden Markov models and Kalman filters ☆ |
-| [132](part13_advanced_shelf.md#day-132) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ MCMC and variational inference ☆ |
-| [133](part13_advanced_shelf.md#day-133) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S1 · Classical and statistical machine learning (Days 121–133) | L3 | ☆ Bayesian networks, causal graphs and uplift ☆ |
-| [134](part13_advanced_shelf.md#day-134) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ More clustering: spectral, mean-shift, OPTICS/HDBSCAN, BIRCH, k-medoids ☆ |
-| [135](part13_advanced_shelf.md#day-135) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ Matrix factorization and manifolds: NMF, ICA, LSA, Isomap, LLE, MDS ☆ |
-| [136](part13_advanced_shelf.md#day-136) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ Association rules: Apriori and FP-Growth ☆ |
-| [137](part13_advanced_shelf.md#day-137) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ Autoencoders and one-class anomaly detection ☆ |
-| [138](part13_advanced_shelf.md#day-138) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ More time series: Holt-Winters, SARIMAX, VAR, state-space, foundation models ☆ |
-| [139](part13_advanced_shelf.md#day-139) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ Optimization toolbox ☆ |
-| [140](part13_advanced_shelf.md#day-140) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S2 · Unsupervised learning and optimization (Days 134–140) | L3 | ☆ AutoML and feature stores ☆ |
-| [141](part13_advanced_shelf.md#day-141) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ CNN architectures in code: LeNet → ConvNeXt ☆ |
-| [142](part13_advanced_shelf.md#day-142) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Autoencoders, VAEs and contrastive learning ☆ |
-| [143](part13_advanced_shelf.md#day-143) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Detection and segmentation deep dive ☆ |
-| [144](part13_advanced_shelf.md#day-144) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ The GAN family ☆ |
-| [145](part13_advanced_shelf.md#day-145) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Diffusion models deep dive ☆ |
-| [146](part13_advanced_shelf.md#day-146) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Graph neural networks and knowledge graphs ☆ |
-| [147](part13_advanced_shelf.md#day-147) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ State-space models (Mamba) and Mixture-of-Experts ☆ |
-| [148](part13_advanced_shelf.md#day-148) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Efficient models: distillation, pruning, quantization ☆ |
-| [149](part13_advanced_shelf.md#day-149) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S3 · Deep-learning extensions (Days 141–149) | L3 | ☆ Training at scale: GPUs, mixed precision, distributed training ☆ |
-| [150](part13_advanced_shelf.md#day-150) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Classic NLP models: n-gram LMs, CRF, HMM-POS, LDA topics, TextRank ☆ |
-| [151](part13_advanced_shelf.md#day-151) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ The encoder family: RoBERTa, DeBERTa, sentence-transformers, ColBERT ☆ |
-| [152](part13_advanced_shelf.md#day-152) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Tokenizers deep dive ☆ |
-| [153](part13_advanced_shelf.md#day-153) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ LLM internals: RoPE, GQA, FlashAttention, KV-cache, speculative decoding ☆ |
-| [154](part13_advanced_shelf.md#day-154) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Parameter-efficient fine-tuning variants ☆ |
-| [155](part13_advanced_shelf.md#day-155) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Alignment methods and reasoning models ☆ |
-| [156](part13_advanced_shelf.md#day-156) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Advanced RAG ☆ |
-| [157](part13_advanced_shelf.md#day-157) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ LLM benchmarks, judges and human evaluation ☆ |
-| [158](part13_advanced_shelf.md#day-158) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Long context, memory and caching ☆ |
-| [159](part13_advanced_shelf.md#day-159) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S4 · NLP and LLM extensions (Days 150–159) | L3 | ☆ Vision-language models and speech ☆ |
-| [160](part13_advanced_shelf.md#day-160) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Bandits, Monte-Carlo and TD(λ) ☆ |
-| [161](part13_advanced_shelf.md#day-161) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ The deep-RL family: Double/Dueling DQN, Rainbow, A2C, DDPG, TD3, SAC, TRPO ☆ |
-| [162](part13_advanced_shelf.md#day-162) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Model-based, offline, imitation and multi-agent RL ☆ |
-| [163](part13_advanced_shelf.md#day-163) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Agent reasoning patterns: Reflexion, Tree-of-Thoughts, self-consistency ☆ |
-| [164](part13_advanced_shelf.md#day-164) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Code agents and computer-use agents ☆ |
-| [165](part13_advanced_shelf.md#day-165) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Agent systems: A2A, supervisor / swarm, durable workflows ☆ |
-| [166](part13_advanced_shelf.md#day-166) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S5 · Reinforcement-learning and agent extensions (Days 160–166) | L3 | ☆ Agent security: OWASP LLM Top-10 ☆ |
-| [167](part13_advanced_shelf.md#day-167) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Data engineering: Kafka, Airflow/Prefect, dbt ☆ |
-| [168](part13_advanced_shelf.md#day-168) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Serving at scale: vLLM, Triton, Ray Serve, Kubernetes ☆ |
-| [169](part13_advanced_shelf.md#day-169) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Python performance for ML engineers ☆ |
-| [170](part13_advanced_shelf.md#day-170) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Privacy and responsible AI ☆ |
-| [171](part13_advanced_shelf.md#day-171) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Recommenders, advanced ☆ |
-| [172](part13_advanced_shelf.md#day-172) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Search and learning-to-rank ☆ |
-| [173](part13_advanced_shelf.md#day-173) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Reading and reproducing a paper ☆ |
-| [174](part13_advanced_shelf.md#day-174) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Kaggle workflow ☆ |
-| [175](part13_advanced_shelf.md#day-175) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Coding-interview pack I: arrays, hashing, two-pointers, stack, heap ☆ |
-| [176](part13_advanced_shelf.md#day-176) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Coding-interview pack II: trees, graphs, DP and "ML from scratch" ☆ |
-| [177](part13_advanced_shelf.md#day-177) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Open source and writing in public ☆ |
-| [178](part13_advanced_shelf.md#day-178) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ ML system design II (ranking, search, fraud at scale) ☆ |
-| [179](part13_advanced_shelf.md#day-179) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Behavioural interview, résumé and salary ☆ |
-| [180](part13_advanced_shelf.md#day-180) | XIII · Advanced Shelf ☆ (optional, Days 121–180) | S6 · Engineering and career (Days 167–180) | L3 | ☆ Final gap audit and your 12-month plan ☆ |
+| [82](part10_embeddings_vector_retrieval_rag.md#day-82) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 42 · Vectorization and embeddings | L1 | Vectorization: from words to vectors (the ladder) |
+| [83](part10_embeddings_vector_retrieval_rag.md#day-83) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 42 · Vectorization and embeddings | L2–3 | Embedding models: how they are trained, chosen and fine-tuned |
+| [84](part10_embeddings_vector_retrieval_rag.md#day-84) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 43 · Vector databases | L1 | Vector search from scratch: exact nearest neighbours |
+| [85](part10_embeddings_vector_retrieval_rag.md#day-85) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 43 · Vector databases | L2 | Approximate nearest-neighbour (ANN) indexes: IVF, PQ, HNSW |
+| [86](part10_embeddings_vector_retrieval_rag.md#day-86) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 43 · Vector databases | L3 | Vector databases: products, filtering and operations (FAISS, Chroma, pgvector, Qdrant) |
+| [87](part10_embeddings_vector_retrieval_rag.md#day-87) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 44 · Retrievers | L1 | Ingestion: parsing and chunking documents |
+| [88](part10_embeddings_vector_retrieval_rag.md#day-88) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 44 · Retrievers | L2 | Retrievers: sparse (BM25), dense and hybrid — and how to measure them |
+| [89](part10_embeddings_vector_retrieval_rag.md#day-89) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 44 · Retrievers | L3 | Improving retrieval: query transformation, MMR and reranking |
+| [90](part10_embeddings_vector_retrieval_rag.md#day-90) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 45 · Augmentation and generation (RAG) | L1 | Augmentation: building the prompt from retrieved context (RAG v1) |
+| [91](part10_embeddings_vector_retrieval_rag.md#day-91) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 45 · Augmentation and generation (RAG) | L2 | Cited and conversational RAG |
+| [92](part10_embeddings_vector_retrieval_rag.md#day-92) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 45 · Augmentation and generation (RAG) | L3 | RAG evaluation: retrieval vs generation |
+| [93](part10_embeddings_vector_retrieval_rag.md#day-93) | X · Embeddings, Vector Databases, Retrievers and Augmentation (RAG) | 45 · Augmentation and generation (RAG) | L3 | Production RAG (checkpoint) |
+| [94](part11_llm_customization.md#day-94) | XI · Customizing and Shipping Generative AI | 46 · Fine-tuning LLMs | L1–2 | Fine-tuning theory: SFT, LoRA, QLoRA |
+| [95](part11_llm_customization.md#day-95) | XI · Customizing and Shipping Generative AI | 46 · Fine-tuning LLMs | L3 | LoRA fine-tuning project |
+| [96](part11_llm_customization.md#day-96) | XI · Customizing and Shipping Generative AI | 47 · Image, audio and multimodal generation | L1–3 | Image generation, multimodal & speech |
+| [97](part11_llm_customization.md#day-97) | XI · Customizing and Shipping Generative AI | 48 · Safety, evaluation, cost and the GenAI project | L2 | LLM safety, evaluation, cost & latency |
+| [98](part11_llm_customization.md#day-98) | XI · Customizing and Shipping Generative AI | 48 · Safety, evaluation, cost and the GenAI project | L3 | GenAI project |
+| [99](part12_agentic_ai.md#day-99) | XII · Agentic AI | 49 · Agent fundamentals: tool calling, planning, memory | L1 | Tool calling & the agent loop (no framework) |
+| [100](part12_agentic_ai.md#day-100) | XII · Agentic AI | 49 · Agent fundamentals: tool calling, planning, memory | L2 | ReAct, planning & task decomposition |
+| [101](part12_agentic_ai.md#day-101) | XII · Agentic AI | 49 · Agent fundamentals: tool calling, planning, memory | L3 | Memory & context engineering |
+| [102](part12_agentic_ai.md#day-102) | XII · Agentic AI | 50 · Frameworks and protocols: LangChain, LangGraph, MCP | L2 | LangChain & LangGraph |
+| [103](part12_agentic_ai.md#day-103) | XII · Agentic AI | 50 · Frameworks and protocols: LangChain, LangGraph, MCP | L3 | MCP: Model Context Protocol |
+| [104](part12_agentic_ai.md#day-104) | XII · Agentic AI | 51 · Agent evaluation, guardrails and safety | L1–3 | Agent evaluation, guardrails & safety |
+| [105](part12_agentic_ai.md#day-105) | XII · Agentic AI | 52 · Multi-agent systems | L1 | Multi-agent I: when to use it, and which architecture |
+| [106](part12_agentic_ai.md#day-106) | XII · Agentic AI | 52 · Multi-agent systems | L2 | Multi-agent II: communication, shared state and contracts |
+| [107](part12_agentic_ai.md#day-107) | XII · Agentic AI | 52 · Multi-agent systems | L2 | Multi-agent III: frameworks side by side (LangGraph, CrewAI, AutoGen, agent SDKs) |
+| [108](part12_agentic_ai.md#day-108) | XII · Agentic AI | 52 · Multi-agent systems | L3 | Multi-agent IV: reliability, cost control and security |
+| [109](part12_agentic_ai.md#day-109) | XII · Agentic AI | 52 · Multi-agent systems | L3 | Multi-agent project (checkpoint): the HR assistant crew |
+| [110](part12_agentic_ai.md#day-110) | XII · Agentic AI | 53 · Build: the HRM payslip agent and an end-to-end agent | L3 | Build: the HRM payslip agent |
+| [111](part12_agentic_ai.md#day-111) | XII · Agentic AI | 53 · Build: the HRM payslip agent and an end-to-end agent | L3 | Agent project |
+| [112](part13_software_engineering_mlops.md#day-112) | XIII · Software Engineering with AI/ML (MLOps) | 54 · Serving a model and securing the API | L1–2 | Serve a model with FastAPI |
+| [113](part13_software_engineering_mlops.md#day-113) | XIII · Software Engineering with AI/ML (MLOps) | 54 · Serving a model and securing the API | L3 | API security: auth, rate limits, secrets |
+| [114](part13_software_engineering_mlops.md#day-114) | XIII · Software Engineering with AI/ML (MLOps) | 55 · Production Python for AI projects | L1–3 | Production Python for AI projects |
+| [115](part13_software_engineering_mlops.md#day-115) | XIII · Software Engineering with AI/ML (MLOps) | 56 · Data and storage for AI apps | L1–3 | Databases inside AI apps (PostgreSQL, pgvector) |
+| [116](part13_software_engineering_mlops.md#day-116) | XIII · Software Engineering with AI/ML (MLOps) | 57 · Packaging and delivery: Docker, Git, CI/CD, testing | L1 | Docker & docker-compose |
+| [117](part13_software_engineering_mlops.md#day-117) | XIII · Software Engineering with AI/ML (MLOps) | 57 · Packaging and delivery: Docker, Git, CI/CD, testing | L2 | Git workflow & CI/CD |
+| [118](part13_software_engineering_mlops.md#day-118) | XIII · Software Engineering with AI/ML (MLOps) | 57 · Packaging and delivery: Docker, Git, CI/CD, testing | L3 | Testing ML & LLM code |
+| [119](part13_software_engineering_mlops.md#day-119) | XIII · Software Engineering with AI/ML (MLOps) | 58 · Async work and caching | L1–2 | Async work: Redis, Celery, caching |
+| [120](part13_software_engineering_mlops.md#day-120) | XIII · Software Engineering with AI/ML (MLOps) | 59 · Front-end for AI apps | L1–3 | Front-end for AI apps: a streaming chat UI |
+| [121](part13_software_engineering_mlops.md#day-121) | XIII · Software Engineering with AI/ML (MLOps) | 60 · Experiment tracking, reproducibility and monitoring | L2 | MLflow, DVC & reproducibility |
+| [122](part13_software_engineering_mlops.md#day-122) | XIII · Software Engineering with AI/ML (MLOps) | 60 · Experiment tracking, reproducibility and monitoring | L3 | Monitoring, drift & LLM tracing |
+| [123](part13_software_engineering_mlops.md#day-123) | XIII · Software Engineering with AI/ML (MLOps) | 61 · Big data and cloud | L2 | PySpark, part 1 |
+| [124](part13_software_engineering_mlops.md#day-124) | XIII · Software Engineering with AI/ML (MLOps) | 61 · Big data and cloud | L2 | PySpark, part 2 |
+| [125](part13_software_engineering_mlops.md#day-125) | XIII · Software Engineering with AI/ML (MLOps) | 61 · Big data and cloud | L3 | Cloud deploy |
+| [126](part14_design_interview_capstone.md#day-126) | XIV · System Design, Interview and Capstone | 62 · ML and LLM system design | L1–2 | ML system design, part 1 |
+| [127](part14_design_interview_capstone.md#day-127) | XIV · System Design, Interview and Capstone | 62 · ML and LLM system design | L3 | ML / LLM system design, part 2 + the design doc |
+| [128](part14_design_interview_capstone.md#day-128) | XIV · System Design, Interview and Capstone | 63 · Capstone: Intelligent HRM Assistant | L1 | Capstone design: **Intelligent HRM Assistant** |
+| [129](part14_design_interview_capstone.md#day-129) | XIV · System Design, Interview and Capstone | 63 · Capstone: Intelligent HRM Assistant | L2 | Capstone build 1: model + RAG |
+| [130](part14_design_interview_capstone.md#day-130) | XIV · System Design, Interview and Capstone | 63 · Capstone: Intelligent HRM Assistant | L2 | Capstone build 2: agent + API + UI |
+| [131](part14_design_interview_capstone.md#day-131) | XIV · System Design, Interview and Capstone | 63 · Capstone: Intelligent HRM Assistant | L3 | Capstone build 3: ship it |
+| [132](part14_design_interview_capstone.md#day-132) | XIV · System Design, Interview and Capstone | 63 · Capstone: Intelligent HRM Assistant | L3 | Polish & document |
+| [133](part14_design_interview_capstone.md#day-133) | XIV · System Design, Interview and Capstone | 64 · Interview and portfolio | L3 | Full mock interview |
+| [134](part14_design_interview_capstone.md#day-134) | XIV · System Design, Interview and Capstone | 64 · Interview and portfolio | L3 | Portfolio & **gap audit** |
+| [135](part15_advanced_shelf.md#day-135) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Robust & quantile regression |
+| [136](part15_advanced_shelf.md#day-136) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Generalized linear models (GLM) and GAMs |
+| [137](part15_advanced_shelf.md#day-137) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Bayesian linear regression (MLE vs MAP vs full Bayes) |
+| [138](part15_advanced_shelf.md#day-138) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Gaussian processes |
+| [139](part15_advanced_shelf.md#day-139) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Kernel ridge regression and kernel PCA |
+| [140](part15_advanced_shelf.md#day-140) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Ordinal, multi-label and cost-sensitive classification |
+| [141](part15_advanced_shelf.md#day-141) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Conformal prediction: honest uncertainty |
+| [142](part15_advanced_shelf.md#day-142) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Survival analysis (employee attrition, churn) |
+| [143](part15_advanced_shelf.md#day-143) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Semi-supervised and active learning |
+| [144](part15_advanced_shelf.md#day-144) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Online / streaming learning and concept drift |
+| [145](part15_advanced_shelf.md#day-145) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Hidden Markov models and Kalman filters |
+| [146](part15_advanced_shelf.md#day-146) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ MCMC and variational inference |
+| [147](part15_advanced_shelf.md#day-147) | XV · Advanced Shelf ☆ | S1 · Classical and statistical machine learning | L3 | ☆ Bayesian networks, causal graphs and uplift |
+| [148](part15_advanced_shelf.md#day-148) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ More clustering: spectral, mean-shift, OPTICS/HDBSCAN, BIRCH, k-medoids |
+| [149](part15_advanced_shelf.md#day-149) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ Matrix factorization and manifolds: NMF, ICA, LSA, Isomap, LLE, MDS |
+| [150](part15_advanced_shelf.md#day-150) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ Association rules: Apriori and FP-Growth |
+| [151](part15_advanced_shelf.md#day-151) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ Autoencoders and one-class anomaly detection |
+| [152](part15_advanced_shelf.md#day-152) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ More time series: Holt-Winters, SARIMAX, VAR, state-space, foundation models |
+| [153](part15_advanced_shelf.md#day-153) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ Optimization toolbox |
+| [154](part15_advanced_shelf.md#day-154) | XV · Advanced Shelf ☆ | S2 · Unsupervised learning and optimization | L3 | ☆ AutoML and feature stores |
+| [155](part15_advanced_shelf.md#day-155) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ CNN architectures in code: LeNet → ConvNeXt |
+| [156](part15_advanced_shelf.md#day-156) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Autoencoders, VAEs and contrastive learning |
+| [157](part15_advanced_shelf.md#day-157) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Detection and segmentation deep dive |
+| [158](part15_advanced_shelf.md#day-158) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ The GAN family |
+| [159](part15_advanced_shelf.md#day-159) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Diffusion models deep dive |
+| [160](part15_advanced_shelf.md#day-160) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Graph neural networks and knowledge graphs |
+| [161](part15_advanced_shelf.md#day-161) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ State-space models (Mamba) and Mixture-of-Experts |
+| [162](part15_advanced_shelf.md#day-162) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Efficient models: distillation, pruning, quantization |
+| [163](part15_advanced_shelf.md#day-163) | XV · Advanced Shelf ☆ | S3 · Deep-learning extensions | L3 | ☆ Training at scale: GPUs, mixed precision, distributed training |
+| [164](part15_advanced_shelf.md#day-164) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Classic NLP models: n-gram LMs, CRF, HMM-POS, LDA topics, TextRank |
+| [165](part15_advanced_shelf.md#day-165) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ The encoder family: RoBERTa, DeBERTa, sentence-transformers, ColBERT |
+| [166](part15_advanced_shelf.md#day-166) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Tokenizers deep dive |
+| [167](part15_advanced_shelf.md#day-167) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ LLM internals: RoPE, GQA, FlashAttention, KV-cache, speculative decoding |
+| [168](part15_advanced_shelf.md#day-168) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Parameter-efficient fine-tuning variants |
+| [169](part15_advanced_shelf.md#day-169) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Alignment methods and reasoning models |
+| [170](part15_advanced_shelf.md#day-170) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Advanced RAG |
+| [171](part15_advanced_shelf.md#day-171) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ LLM benchmarks, judges and human evaluation |
+| [172](part15_advanced_shelf.md#day-172) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Long context, memory and caching |
+| [173](part15_advanced_shelf.md#day-173) | XV · Advanced Shelf ☆ | S4 · NLP and LLM extensions | L3 | ☆ Vision-language models and speech |
+| [174](part15_advanced_shelf.md#day-174) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Bandits, Monte-Carlo and TD(λ) |
+| [175](part15_advanced_shelf.md#day-175) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ The deep-RL family: Double/Dueling DQN, Rainbow, A2C, DDPG, TD3, SAC, TRPO |
+| [176](part15_advanced_shelf.md#day-176) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Model-based, offline, imitation and multi-agent RL |
+| [177](part15_advanced_shelf.md#day-177) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Agent reasoning patterns: Reflexion, Tree-of-Thoughts, self-consistency |
+| [178](part15_advanced_shelf.md#day-178) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Code agents and computer-use agents |
+| [179](part15_advanced_shelf.md#day-179) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Durable workflows and A2A at scale |
+| [180](part15_advanced_shelf.md#day-180) | XV · Advanced Shelf ☆ | S5 · Reinforcement-learning and agent extensions | L3 | ☆ Agent security: OWASP LLM Top-10 |
+| [181](part15_advanced_shelf.md#day-181) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Data engineering: Kafka, Airflow/Prefect, dbt |
+| [182](part15_advanced_shelf.md#day-182) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Serving at scale: vLLM, Triton, Ray Serve, Kubernetes |
+| [183](part15_advanced_shelf.md#day-183) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Python performance for ML engineers |
+| [184](part15_advanced_shelf.md#day-184) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Privacy and responsible AI |
+| [185](part15_advanced_shelf.md#day-185) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Recommenders, advanced |
+| [186](part15_advanced_shelf.md#day-186) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Search and learning-to-rank |
+| [187](part15_advanced_shelf.md#day-187) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Reading and reproducing a paper |
+| [188](part15_advanced_shelf.md#day-188) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Kaggle workflow |
+| [189](part15_advanced_shelf.md#day-189) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Coding-interview pack I: arrays, hashing, two-pointers, stack, heap |
+| [190](part15_advanced_shelf.md#day-190) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Coding-interview pack II: trees, graphs, DP and "ML from scratch" |
+| [191](part15_advanced_shelf.md#day-191) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Open source and writing in public |
+| [192](part15_advanced_shelf.md#day-192) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ ML system design II (ranking, search, fraud at scale) |
+| [193](part15_advanced_shelf.md#day-193) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Behavioural interview, résumé and salary |
+| [194](part15_advanced_shelf.md#day-194) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Cloud for AI engineers: AWS, GCP and Azure |
+| [195](part15_advanced_shelf.md#day-195) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Infrastructure as code and FinOps |
+| [196](part15_advanced_shelf.md#day-196) | XV · Advanced Shelf ☆ | S6 · Engineering and career | L3 | ☆ Final gap audit and your 12-month plan |
 
 ---
 

@@ -1,22 +1,23 @@
-# PART XI — Software Engineering with AI/ML (MLOps)
+# PART XIII — Software Engineering with AI/ML (MLOps)
 
-[📖 Table of contents](README.md) · [← previous part](part10_agentic_ai.md) · [next part →](part12_design_interview_capstone.md) · [Appendices](appendix.md)
+[📖 Table of contents](README.md) · [← previous part](part12_agentic_ai.md) · [next part →](part14_design_interview_capstone.md) · [Appendices](appendix.md)
 
-> **Days 100–111 · Category: building, shipping and running AI systems · Levels: 1 → 3 in every chapter**
+
+> **Days 112–125 · Category: building, shipping and running AI systems · Levels: 1 → 3 in every chapter**
 > **You will be able to:** serve a model with FastAPI, secure the API, connect PostgreSQL / pgvector, containerize with Docker, run CI/CD, test ML and LLM code, run background jobs, track experiments, monitor drift, process big data with PySpark, and deploy to the cloud.
 > **You already know SQL (5 years) and FastAPI** — these days focus on what is *different* for AI services: model loading, latency, validation, drift, cost, and testing fuzzy output.
-> **Math you meet here (just-in-time):** p50 / p95 latency (Day 100) · token bucket (101) · PSI / KS drift (108) · Amdahl's law (109).
-> **More depth:** Advanced shelf Days 167–170 (Kafka / Airflow, vLLM / Kubernetes, Python performance, privacy).
+> **Math you meet here (just-in-time):** p50 / p95 latency (Day 112) · token bucket (113) · PSI / KS drift (122) · Amdahl's law (123).
+> **More depth:** Advanced shelf Days 181–184 (Kafka / Airflow, vLLM / Kubernetes, Python performance, privacy).
 
 ---
 
-## Chapter 51 — Serving a model and securing the API
+## Chapter 54 — Serving a model and securing the API
 
 > ⚠️ **Common mistakes:** loading the model on every request · no input validation · no rate limit on an LLM endpoint (cost!) · secrets in code.
 
 ### Level 1–2: FastAPI model serving
-<a id="day-100"></a>
-#### ☐ Day 100 — Serve a model with FastAPI
+<a id="day-112"></a>
+#### ☐ Day 112 — Serve a model with FastAPI
 - 🧮 **New math today (just-in-time):** latency percentiles (p50 / p95) and throughput.
 - 🧠 **Idea · L1:** a model is useful only when other software can call it. Load the model **once at start-up**, validate every input, return clear errors.
 - ➗ **Equation · L1:** latency `p50 / p95` · throughput `= requests/second` · `workers × (1/latency)` ≈ capacity
@@ -28,8 +29,8 @@
 
 
 ### Level 3: authentication, rate limits, secrets
-<a id="day-101"></a>
-#### ☐ Day 101 — API security: auth, rate limits, secrets
+<a id="day-113"></a>
+#### ☐ Day 113 — API security: auth, rate limits, secrets
 - 🧮 **New math today (just-in-time):** token-bucket rate limiting and JWT signatures.
 - 🧠 **Idea · L1:** an AI endpoint costs money and can leak data. Protect it.
 - ➗ **Equation · L1:** JWT = `header.payload.signature` · token bucket `tokens += rate·Δt (max burst)`
@@ -40,11 +41,28 @@
 - ✅ **Done when:** all 4 attack tests are blocked.
 
 
-## Chapter 52 — Data and storage for AI apps
+## Chapter 55 — Production Python for AI projects
+
+> ⚠️ **Common mistakes:** secrets in code · print-debugging instead of structured logs · no types · a single 2 000-line notebook as "the project".
 
 ### Levels 1 → 3 (inside the day)
-<a id="day-102"></a>
-#### ☐ Day 102 — Databases inside AI apps (PostgreSQL, pgvector)
+<a id="day-114"></a>
+#### ☐ Day 114 — Production Python for AI projects
+- 🧮 **New math today (just-in-time):** none — this day is craft.
+- 🧠 **Idea · L1:** notebook code becomes a product only with engineering habits: **type hints** (checked with `mypy` / `pyright`), **configuration** from environment variables (`pydantic-settings`, never secrets in code), **structured logging** (JSON logs with request and run ids), a clean **project layout** (`src/` package, `tests/`, `pyproject.toml`), dependency pinning, **`ruff`** lint + format, **pre-commit** hooks, small pure functions, and clear error types.
+- ➗ **Equation · L1:** none — measure: type-check errors = 0, test coverage, lint warnings = 0, cold-start time.
+- ⌨️ **Build · L2:** refactor your HRM / RAG notebook code into a package: `src/hrm_ai/…` with typed functions, a `Settings` class, a logging setup that adds `request_id`, a CLI entry point, `pyproject.toml`, `pre-commit` with `ruff` and `mypy`; install it with `pip install -e .`.
+- 📊 **Measure · L2:** `mypy --strict` errors, `ruff` warnings, test coverage %, import time.
+- 📈 **Improve · L3:** script → functions → package → typed + linted + logged.
+- 🎤 **Interview · L3:** Why type hints in Python? · How do you manage configuration and secrets? · What goes in a good log line?
+- ✅ **Done when:** a fresh clone installs with one command, passes `ruff`, `mypy` and `pytest`, and logs JSON.
+
+
+## Chapter 56 — Data and storage for AI apps
+
+### Levels 1 → 3 (inside the day)
+<a id="day-115"></a>
+#### ☐ Day 115 — Databases inside AI apps (PostgreSQL, pgvector)
 - 🧠 **Idea · L1:** you know SQL — focus on **app integration**: ORM, async, migrations, vector columns, indexes.
 - ➗ **Equation · L1:** HNSW index = approximate nearest neighbours (recall ↔ speed trade-off)
 - ⌨️ **Build · L2:** SQLAlchemy async + Alembic; a `documents` table with a `vector` column (pgvector); store predictions + feedback; (optional MongoDB for logs).
@@ -54,13 +72,13 @@
 - ✅ **Done when:** RAG runs on pgvector with an index.
 
 
-## Chapter 53 — Packaging and delivery: Docker, Git, CI/CD, testing
+## Chapter 57 — Packaging and delivery: Docker, Git, CI/CD, testing
 
 > ⚠️ **Common mistakes:** fat images · tests that need the real LLM · merging with a red pipeline.
 
 ### Level 1: Docker
-<a id="day-103"></a>
-#### ☐ Day 103 — Docker & docker-compose
+<a id="day-116"></a>
+#### ☐ Day 116 — Docker & docker-compose
 - 🧠 **Idea · L1:** package code + dependencies so "it works on my machine" is the same everywhere.
 - ➗ **Equation · L1:** image size `= Σ layers` — smaller is faster to deploy.
 - ⌨️ **Build · L2:** `Dockerfile` (multi-stage, slim, non-root user, cached layers); `docker-compose` with api + postgres + redis; health-checks; `.dockerignore`.
@@ -71,8 +89,8 @@
 
 
 ### Level 2: Git workflow and CI
-<a id="day-104"></a>
-#### ☐ Day 104 — Git workflow & CI/CD
+<a id="day-117"></a>
+#### ☐ Day 117 — Git workflow & CI/CD
 - 🧠 **Idea · L1:** every change goes through branch → pull request → review → automatic checks → merge.
 - ➗ **Equation · L1:** none — pipeline = lint → test → build → (deploy).
 - ⌨️ **Build · L2:** feature branch + PR; small commits (`feat:`, `fix:`); GitHub Actions: `ruff` + `pytest` + Docker build; a PR template; branch protection.
@@ -83,8 +101,8 @@
 
 
 ### Level 3: testing ML and LLM code
-<a id="day-105"></a>
-#### ☐ Day 105 — Testing ML & LLM code
+<a id="day-118"></a>
+#### ☐ Day 118 — Testing ML & LLM code
 - 🧠 **Idea · L1:** ML code is hard to test because outputs are fuzzy. Test the **parts**: data checks, pure functions, API contracts, and **score thresholds**.
 - ➗ **Equation · L1:** model regression test `score ≥ baseline − tolerance`
 - ⌨️ **Build · L2:** `pytest` fixtures; unit tests for preprocessing; data validation (`pandera`); API tests with `TestClient`; mock the LLM; golden-set test for prompts.
@@ -94,11 +112,11 @@
 - ✅ **Done when:** CI fails if the model score drops.
 
 
-## Chapter 54 — Async work, MLOps and monitoring
+## Chapter 58 — Async work and caching
 
 ### Level 1–2: queues and caching
-<a id="day-106"></a>
-#### ☐ Day 106 — Async work: Redis, Celery, caching
+<a id="day-119"></a>
+#### ☐ Day 119 — Async work: Redis, Celery, caching
 - 🧠 **Idea · L1:** slow jobs (training, big LLM batches) must not block the API. Use a queue + workers. Cache repeated answers.
 - ➗ **Equation · L1:** cache hit rate `= hits/requests` · retry with exponential back-off `delay = base·2ⁿ`
 - ⌨️ **Build · L2:** Celery worker + Redis broker; job status endpoint; cache LLM / prediction results; idempotent retries.
@@ -108,9 +126,28 @@
 - ✅ **Done when:** a long job runs in the background and reports progress.
 
 
+## Chapter 59 — Front-end for AI apps
+
+> ⚠️ **Common mistakes:** waiting for the full answer before showing anything · no stop / retry · hiding the sources · exposing API keys in the browser.
+
+### Levels 1 → 3 (inside the day)
+<a id="day-120"></a>
+#### ☐ Day 120 — Front-end for AI apps: a streaming chat UI
+- 🧮 **New math today (just-in-time):** none — time-to-first-token and perceived latency.
+- 🧠 **Idea · L1:** users judge your AI by the screen. A good AI UI **streams** tokens as they arrive (**SSE** or WebSocket), shows sources and citations, handles **loading / error / stop / retry** states, keeps conversation **state**, and respects **authentication**. You already use Next.js in `hrm_app/`; Streamlit or Gradio are the fast options for demos.
+- ➗ **Equation · L1:** time to first token `TTFT` · perceived latency `≈ TTFT + tokens/speed` — stream, do not wait.
+- ⌨️ **Build · L2:** a chat page that calls your FastAPI streaming endpoint (Day 91), renders Markdown, shows citation chips that open the source, a stop button (abort), retry on error, conversation history in state, JWT login (Day 113); a Streamlit or Gradio version as a 30-minute alternative.
+- 📊 **Measure · L2:** TTFT, total time, error and retry handling (kill the backend mid-stream), accessibility basics (keyboard, contrast).
+- 📈 **Improve · L3:** wait-for-full-answer → streaming → + citations → + stop / retry.
+- 🎤 **Interview · L3:** SSE vs WebSocket for LLM streaming? · How do you handle a stream that fails halfway? · What should a RAG UI show to build trust?
+- ✅ **Done when:** a logged-in user chats with streamed, cited answers and can stop and retry.
+
+
+## Chapter 60 — Experiment tracking, reproducibility and monitoring
+
 ### Level 2: experiment tracking and reproducibility
-<a id="day-107"></a>
-#### ☐ Day 107 — MLflow, DVC & reproducibility
+<a id="day-121"></a>
+#### ☐ Day 121 — MLflow, DVC & reproducibility
 - 🧠 **Idea · L1:** you must reproduce any result: code + data + params + environment.
 - ➗ **Equation · L1:** none — run = (git commit, data hash, params, metrics, artifacts).
 - ⌨️ **Build · L2:** MLflow tracking + model registry; DVC for data; fixed seeds; pinned `requirements.txt`; a model card.
@@ -121,8 +158,8 @@
 
 
 ### Level 3: monitoring, drift and LLM tracing
-<a id="day-108"></a>
-#### ☐ Day 108 — Monitoring, drift & LLM tracing
+<a id="day-122"></a>
+#### ☐ Day 122 — Monitoring, drift & LLM tracing
 - 🧮 **New math today (just-in-time):** Population Stability Index (PSI) and the KS test.
 - 🧠 **Idea · L1:** a model decays when the world changes. Watch inputs, outputs, errors, cost.
 - ➗ **Equation · L1:** PSI `= Σ (aᵢ − eᵢ)·ln(aᵢ/eᵢ)` (< 0.1 ok, > 0.25 big shift) · KS test for drift
@@ -133,11 +170,11 @@
 - ✅ **Done when:** a drift alert fires on your simulated shift.
 
 
-## Chapter 55 — Big data and cloud
+## Chapter 61 — Big data and cloud
 
 ### Level 2: PySpark
-<a id="day-109"></a>
-#### ☐ Day 109 — PySpark, part 1
+<a id="day-123"></a>
+#### ☐ Day 123 — PySpark, part 1
 - 🧮 **New math today (just-in-time):** Amdahl's law.
 - 🧠 **Idea · L1:** data too big for one machine. Spark splits it into **partitions** and runs on many cores. Lazy: nothing runs until an **action**.
 - ➗ **Equation · L1:** speed-up ≈ `1/((1−p) + p/N)` (Amdahl's law)
@@ -147,8 +184,8 @@
 - 🎤 **Interview · L3:** Transformation vs action? · What is a shuffle? · When NOT to use Spark?
 - ✅ **Done when:** you processed a file larger than your RAM.
 
-<a id="day-110"></a>
-#### ☐ Day 110 — PySpark, part 2
+<a id="day-124"></a>
+#### ☐ Day 124 — PySpark, part 2
 - 🧠 **Idea · L1:** ETL + features + models at scale. Know Spark MLlib and Dask as options.
 - ➗ **Equation · L1:** none new.
 - ⌨️ **Build · L2:** ETL pipeline: read → clean → features → write; a Spark MLlib `Pipeline` (or pandas-on-Spark); compare with your sklearn pipeline.
@@ -159,20 +196,20 @@
 
 
 ### Level 3: cloud deployment (checkpoint)
-<a id="day-111"></a>
-#### ☐ Day 111 — Cloud deploy
+<a id="day-125"></a>
+#### ☐ Day 125 — Cloud deploy
 - 🧠 **Idea · L1:** put the service on the internet. Options: Render / Railway / Hugging Face Spaces (easy), AWS (ECR + ECS / Lambda), plus awareness of Kubernetes (pod, deployment, service) and managed ML (SageMaker, Vertex AI, Azure ML).
 - ➗ **Equation · L1:** monthly cost `≈ (instance price × hours) + (egress) + (LLM tokens)`
 - ⌨️ **Build · L2:** deploy your **FastAPI + Docker** service publicly with secrets set in the platform; health-check; logs; rollback.
 - 📊 **Measure · L2:** cold-start, p95, cost per day.
 - 📈 **Improve · L3:** manual deploy → CI deploy on merge.
-- 🎤 **Interview · L3:** answer **20 questions** (Days 100–111). Blue-green vs canary?
+- 🎤 **Interview · L3:** answer **20 questions** (Days 112–125). Blue-green vs canary?
 - ✅ **Checkpoint:** a **live URL** for your HR policy assistant.
 
 
 ---
 
-### ✅ Part XI cheat card — where to deploy?
+### ✅ Part XIII cheat card — where to deploy?
 | Option | Effort | Cost | Good for | Limit |
 |---|---|---|---|---|
 | Hugging Face Spaces | lowest | free tier | demos, Gradio / Streamlit | not for private production |
@@ -181,4 +218,4 @@
 | Kubernetes | high | infra cost | many services, autoscaling | needs a platform team |
 | Edge / on-device (ONNX) | medium | low | privacy, offline | small models only |
 
-[📖 Table of contents](README.md) · [← previous part](part10_agentic_ai.md) · [next part →](part12_design_interview_capstone.md) · [Appendices](appendix.md)
+[📖 Table of contents](README.md) · [← previous part](part12_agentic_ai.md) · [next part →](part14_design_interview_capstone.md) · [Appendices](appendix.md)

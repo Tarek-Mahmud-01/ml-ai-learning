@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part2_supervised_regression.md) · [next part →](part4_unsupervised.md) · [Appendices](appendix.md)
 
+
 > **Days 16–33 · Category: Supervised learning — predict a category (best: a probability) · Levels: 1 → 3 in every chapter**
 > **You will be able to:** explain, build and improve the 12 classic classifiers — logistic regression, KNN, Naive Bayes, LDA/QDA, SVM/SVR, decision trees, Random Forest, Extra Trees, AdaBoost, Gradient Boosting, XGBoost / LightGBM / CatBoost, stacking — and choose between them with the right metric.
 > **Math you meet here (just-in-time):** probability, Bayes, distributions (Day 16) · odds, sigmoid (17) · MLE, entropy, cross-entropy, KL (18) · distances (23) · margin, hinge loss (25) · information gain (27) · variance of an average (29) · Hessian (32).

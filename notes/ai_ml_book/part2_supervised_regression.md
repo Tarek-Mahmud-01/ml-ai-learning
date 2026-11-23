@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part1_start_here.md) · [next part →](part3_supervised_classification.md) · [Appendices](appendix.md)
 
+
 > **Days 4–15 · Category: Supervised learning — predict a number · Levels: 1 → 3 in every chapter**
 > **You will be able to:** build a linear regression three ways (closed form, gradient descent, matrices), check its assumptions, clean and encode data for it, measure it, fix over-/under-fitting, and ship a "Price predictor".
 > **Math you meet here (just-in-time):** derivatives and partial derivatives (Day 5) · gradient and learning rate (Day 6) · vectors, matrices, the normal equation (Day 7) · hypothesis tests and p-values (Day 8) · L1 / L2 norms (Day 14).
@@ -201,6 +202,6 @@
 | Ridge | `λΣw²` | no | well | **yes** |
 | Lasso | `λΣ\|w\|` | **yes** (selects features) | picks one of a group | **yes** |
 | ElasticNet | mix | yes | well | **yes** |
-| Huber (shelf, Day 121) | robust loss | no | — | yes |
+| Huber (shelf, Day 135) | robust loss | no | — | yes |
 
 [📖 Table of contents](README.md) · [← previous part](part1_start_here.md) · [next part →](part3_supervised_classification.md) · [Appendices](appendix.md)

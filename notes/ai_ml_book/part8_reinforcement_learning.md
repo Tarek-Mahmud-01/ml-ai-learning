@@ -2,10 +2,11 @@
 
 [📖 Table of contents](README.md) · [← previous part](part7_nlp.md) · [next part →](part9_generative_ai.md) · [Appendices](appendix.md)
 
+
 > **Days 74–76 · Category: reinforcement learning (learn by reward) · Levels: 1 → 3 in every chapter**
 > **You will be able to:** model a problem as an MDP, write the Bellman equation, build Q-learning and a DQN, explain PPO, and describe how RLHF / DPO / GRPO turn a text predictor into an assistant.
 > **Math you meet here (just-in-time):** return, discount factor, Bellman equation (Day 74) · policy-gradient theorem, PPO clip (75) · reward model, KL penalty (76).
-> **More RL (bandits deep dive, SAC / TD3, offline, multi-agent):** Advanced shelf, Days 160–162.
+> **More RL (bandits deep dive, SAC / TD3, offline, multi-agent):** Advanced shelf, Days 174–176.
 
 ---
 

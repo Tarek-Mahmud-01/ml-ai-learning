@@ -1,11 +1,12 @@
-# PART IX — Generative AI and Large Language Models
+# PART IX — Generative AI and Large Language Models: foundations
 
-[📖 Table of contents](README.md) · [← previous part](part8_reinforcement_learning.md) · [next part →](part10_agentic_ai.md) · [Appendices](appendix.md)
+[📖 Table of contents](README.md) · [← previous part](part8_reinforcement_learning.md) · [next part →](part10_embeddings_vector_retrieval_rag.md) · [Appendices](appendix.md)
 
-> **Days 77–90 · Category: generative models · Levels: 1 → 3 in every chapter**
-> **You will be able to:** explain and build a tiny GPT, call LLM APIs with streaming and cost control, write tested prompts with structured output, build and evaluate RAG with citations, fine-tune with LoRA, understand image / audio generation, and defend an LLM app against hallucination and prompt injection.
-> **Math you meet here (just-in-time):** next-token probability and perplexity (Day 77) · temperature, top-k, top-p (79) · cosine and ANN (82) · RRF, MRR (84–85) · low-rank `W + BA` (86) · ELBO, diffusion noise (88).
-> **More depth:** Advanced shelf Days 150–159 (tokenizers, RoPE / KV-cache, DPO / GRPO, advanced RAG, benchmarks).
+> **Days 77–81 · Category: generative models (text) · Levels: 1 → 3 in every chapter**
+> **You will be able to:** explain and build a tiny GPT, call LLM APIs (hosted *and* local) with streaming and cost control, and write tested prompts with structured output.
+> **Math you meet here (just-in-time):** next-token probability and perplexity (Day 77) · temperature, top-k, top-p (79).
+> **Next:** Part X (Days 82–93) teaches embeddings, vector databases, retrievers and RAG in depth. Part XI (Days 94–98) covers fine-tuning, image / audio generation and safety.
+> **More depth:** Advanced shelf Days 164–173 (encoder family, tokenizers, RoPE / KV-cache, PEFT variants, DPO / GRPO, advanced RAG, benchmarks, long context, vision-language and speech).
 
 ---
 
@@ -57,13 +58,13 @@
 
 ### Level 1–2: API, streaming, cost
 <a id="day-80"></a>
-#### ☐ Day 80 — LLM APIs: messages, streaming, cost
+#### ☐ Day 80 — LLM APIs and local models: messages, streaming, cost
 - 🧠 **Idea · L1:** use a hosted model through an API. Know: system prompt, messages, `max_tokens`, `temperature`, streaming, rate limits, retries.
 - ➗ **Equation · L1:** cost `= (in_tokens × price_in) + (out_tokens × price_out)`
-- ⌨️ **Build · L2:** Claude API: first call, multi-turn chat, streaming, token counting, retry with back-off, error handling; a tiny CLI chat.
+- ⌨️ **Build · L2:** Claude API: first call, multi-turn chat, streaming, token counting, retry with back-off, error handling; a tiny CLI chat. **Local models:** run an open model with **Ollama** or `llama.cpp` (GGUF files, 4-bit quantization), call it through the same OpenAI-compatible interface, and compare quality, speed and cost with the hosted model — the privacy option for company data.
 - 📊 **Measure · L2:** latency (first token / total), tokens, cost per call.
 - 📈 **Improve · L3:** non-streaming → streaming; long prompt → trimmed prompt (cost drops).
-- 🎤 **Interview · L3:** System vs user message? · How do you handle rate limits? · How do you cut cost?
+- 🎤 **Interview · L3:** System vs user message? · How do you handle rate limits? · How do you cut cost? · When would you run a model locally instead of calling an API?
 - ✅ **Done when:** a script chats, streams and prints cost.
 
 
@@ -78,139 +79,4 @@
 - 🎤 **Interview · L3:** Few-shot vs chain-of-thought? · How do you stop prompt injection? · How do you test prompts?
 - ✅ **Done when:** V4 is ≥ 95 % on your test set.
 
-
-## Chapter 42 — Retrieval-Augmented Generation (RAG)
-
-> ⚠️ **Common mistakes:** one giant chunk size for everything · no citations · not separating retrieval failures from generation failures.
-
-### Level 1: embeddings and vector search
-<a id="day-82"></a>
-#### ☐ Day 82 — Embeddings & vector databases
-- 🧮 **New math today (just-in-time):** cosine similarity and approximate nearest neighbours (HNSW).
-- 🧠 **Idea · L1:** turn text into a vector so **meaning** can be compared. Store vectors in a vector DB; search by nearest neighbour.
-- ➗ **Equation · L1:** cosine `a·b/(‖a‖‖b‖)` · ANN indexes: flat (exact), IVF, **HNSW** (graph) · `recall@k`
-- ⌨️ **Build · L2:** embed 200 HR sentences; brute-force search → FAISS → Chroma → pgvector; metadata filters.
-- 📊 **Measure · L2:** recall@k and latency per index type.
-- 📈 **Improve · L3:** keyword search → embedding search → + filters.
-- 🎤 **Interview · L3:** Why cosine? · Exact vs approximate search? · How do you pick an embedding model?
-- ✅ **Done when:** semantic search finds answers with zero shared keywords.
-
-
-### Level 2: RAG v1 and v2
-<a id="day-83"></a>
-#### ☐ Day 83 — RAG, version 1
-- 🧠 **Idea · L1:** the model does not know *your* documents. **Retrieve** the right chunks, put them in the prompt, answer **only** from them.
-- ➗ **Equation · L1:** chunk size `c` and overlap `o` · top-k retrieval `argmax_k cos(q, dᵢ)`
-- ⌨️ **Build · L2:** load HRM rulebook → chunk → embed → store → retrieve → prompt → answer ("What is the overtime policy?").
-- 📊 **Measure · L2:** 20 test questions: right chunk retrieved? right answer?
-- 📈 **Improve · L3:** V1 chunk 1000 → V2 chunk 400 + overlap → V3 k tuned.
-- 🎤 **Interview · L3:** What is RAG and why not fine-tune? · How do you choose chunk size? · What if the answer is not in the documents?
-- ✅ **Done when:** it answers 15 / 20 questions correctly.
-
-<a id="day-84"></a>
-#### ☐ Day 84 — RAG, version 2: hybrid search, rerank, citations
-- 🧮 **New math today (just-in-time):** Reciprocal Rank Fusion and BM25.
-- 🧠 **Idea · L1:** better retrieval = better answers. Combine keyword (BM25) and vector search, **rerank** with a cross-encoder, rewrite the query, **cite** sources.
-- ➗ **Equation · L1:** Reciprocal Rank Fusion `score(d) = Σ 1/(k + rankᵢ(d))` · BM25 (TF-IDF family)
-- ⌨️ **Build · L2:** BM25 + vectors + RRF; reranker; query rewriting; answer with `[source: file p.3]`.
-- 📊 **Measure · L2:** recall@k and answer accuracy vs V1.
-- 📈 **Improve · L3:** vector only → hybrid → + rerank → + query rewrite.
-- 🎤 **Interview · L3:** Why hybrid search? · What does a reranker do? · How do you reduce hallucination?
-- ✅ **Done when:** every answer has a citation that is correct.
-
-
-### Level 3: evaluate and improve
-<a id="day-85"></a>
-#### ☐ Day 85 — RAG evaluation & improvement
-- 🧮 **New math today (just-in-time):** recall@k, MRR and faithfulness metrics.
-- 🧠 **Idea · L1:** you cannot improve what you do not measure. Split failures into **retrieval** vs **generation**.
-- ➗ **Equation · L1:** `MRR = (1/Q) Σ 1/rankᵢ` · `recall@k` · faithfulness (answer supported by context?) · answer relevance · LLM-as-judge (check it against human labels)
-- ⌨️ **Build · L2:** an eval set of 40 Q&A; automatic metrics; judge prompt; a table of failures by cause.
-- 📊 **Measure · L2:** metrics for V1…V4; the biggest failure cause.
-- 📈 **Improve · L3:** fix the top cause → re-run → log.
-- 🎤 **Interview · L3:** How do you evaluate RAG? · LLM-as-judge risks? · Retrieval failure vs generation failure?
-- ✅ **Done when:** a results table shows V1 → V4 gains.
-
-
-## Chapter 43 — Fine-tuning LLMs
-
-> ⚠️ **Common mistakes:** fine-tuning to add *knowledge* (use RAG) · tiny dirty datasets · no held-out evaluation.
-
-### Level 1–2: SFT, LoRA, QLoRA theory
-<a id="day-86"></a>
-#### ☐ Day 86 — Fine-tuning theory: SFT, LoRA, QLoRA
-- 🧮 **New math today (just-in-time):** low-rank decomposition `W′ = W + (α/r)·B·A`.
-- 🧠 **Idea · L1:** change the model itself. **LoRA** trains two tiny matrices instead of the whole weight. When to use: prompt first → RAG for knowledge → fine-tune for **style / format / skill**.
-- ➗ **Equation · L1:** `W′ = W + (α/r)·B·A`, `B ∈ ℝ^{d×r}`, `A ∈ ℝ^{r×k}`, `r ≪ d` · trainable params `= r(d + k)` vs `d·k` · QLoRA = 4-bit base weights
-- ⌨️ **Build · L2:** compute the parameter savings for r = 8; format an SFT dataset (instruction → answer); a preference pair for DPO.
-- 📊 **Measure · L2:** memory / parameter count with and without LoRA.
-- 📈 **Improve · L3:** decision table "prompt vs RAG vs fine-tune" for 6 real tasks.
-- 🎤 **Interview · L3:** Why does LoRA work? · RAG vs fine-tuning? · What is QLoRA?
-- ✅ **Done when:** you can justify the choice for 6 tasks.
-
-
-### Level 3: a real LoRA project
-<a id="day-87"></a>
-#### ☐ Day 87 — LoRA fine-tuning project
-- 🧠 **Idea · L1:** do it for real on a small open model (≤ 1–3 B) on a free GPU.
-- ➗ **Equation · L1:** same as Day 86; watch training loss and eval loss.
-- ⌨️ **Build · L2:** `transformers` + `peft` + `trl`; train on 500–2 000 examples; merge or load the adapter; push to the Hugging Face Hub.
-- 📊 **Measure · L2:** base vs prompted vs fine-tuned on a held-out set.
-- 📈 **Improve · L3:** r = 4 → 8 → 16; LR; epochs; data quality (clean 100 bad examples).
-- 🎤 **Interview · L3:** What can go wrong (overfit, forgetting, bad data)? · How do you evaluate a fine-tune? · Adapter vs merged weights?
-- ✅ **Done when:** model card on the Hub + a results table.
-
-
-## Chapter 44 — Image, audio and multimodal generation
-
-### Levels 1 → 3 (inside the day)
-<a id="day-88"></a>
-#### ☐ Day 88 — Image generation, multimodal & speech
-- 🧮 **New math today (just-in-time):** ELBO and KL (VAE), the GAN game, the diffusion noise schedule.
-- 🧠 **Idea · L1:** **VAE** compresses, **GAN** plays a forger-vs-detective game, **diffusion** learns to remove noise (today's best). Vision-language models read images; Whisper hears; TTS speaks.
-- ➗ **Equation · L1:** VAE `ELBO = E[log p(x|z)] − KL(q(z|x)‖p(z))` · GAN `min_G max_D E[log D(x)] + E[log(1 − D(G(z)))]` · diffusion `x_t = √ᾱ_t·x₀ + √(1−ᾱ_t)·ε`, the net predicts `ε`
-- ⌨️ **Build · L2:** a tiny VAE on MNIST; `diffusers` text-to-image, image-to-image, inpainting, super-resolution; overview of style transfer and DreamBooth / LoRA personalisation; a vision-language question on a photo; Whisper transcription; a voice round-trip.
-- 📊 **Measure · L2:** sample quality (look), speed, cost; word-error-rate for speech.
-- 📈 **Improve · L3:** default → prompt / guidance scale / steps → negative prompts.
-- 🎤 **Interview · L3:** GAN vs VAE vs diffusion? · Why is diffusion stable to train? · How does CLIP link text and images?
-- ✅ **Done when:** you generated an image and transcribed an audio file.
-
-
-## Chapter 45 — Safety, evaluation, cost and the GenAI project
-
-### Level 2: safety and evals
-<a id="day-89"></a>
-#### ☐ Day 89 — LLM safety, evaluation, cost & latency
-- 🧠 **Idea · L1:** production LLM apps fail in new ways: hallucination, prompt injection, data leaks, cost spikes.
-- ➗ **Equation · L1:** p50 / p95 latency · cache hit rate `= hits/requests` · cost per 1 000 requests
-- ⌨️ **Build · L2:** an **eval harness** (cases + metrics + report); guardrails (input / output checks, PII masking); response cache; batching; streaming.
-- 📊 **Measure · L2:** before / after: latency, cost, error rate.
-- 📈 **Improve · L3:** no guard → guard → guard + cache.
-- 🎤 **Interview · L3:** What is prompt injection and how do you defend? · How do you detect hallucination? · How do you cut latency and cost?
-- ✅ **Done when:** you have a red-team list of 10 attacks and the results.
-
-
-### Level 3: project checkpoint
-<a id="day-90"></a>
-#### ☐ Day 90 — GenAI project
-- 🧠 **Idea · L1:** put it all together.
-- ➗ **Equation · L1:** none new — report the metrics from Day 85.
-- ⌨️ **Build · L2:** **"HR policy assistant"**: RAG with citations, streaming FastAPI endpoint, eval set, cost report.
-- 📊 **Measure · L2:** accuracy, citation accuracy, p95 latency, cost / question.
-- 📈 **Improve · L3:** one full V1 → V4 ladder, written up.
-- 🎤 **Interview · L3:** answer **20 questions** (Days 77–90). Design a RAG system on a whiteboard.
-- ✅ **Checkpoint:** README + test + demo GIF.
-
-
----
-
-### ✅ Part IX cheat card — prompt vs RAG vs fine-tune
-| You need… | Use | Why |
-|---|---|---|
-| A different tone / format | **Prompt** (+ examples) | cheapest, instant |
-| Answers from *your* documents, always current | **RAG** | knowledge lives outside the model; citations |
-| A consistent style / skill / short outputs at scale | **Fine-tune (LoRA)** | bakes behaviour into weights, lower latency |
-| New knowledge **and** consistent style | RAG + fine-tune | combine |
-| Actions in the real world | **Agent** (Part X) | tools + loop |
-
-[📖 Table of contents](README.md) · [← previous part](part8_reinforcement_learning.md) · [next part →](part10_agentic_ai.md) · [Appendices](appendix.md)
+[📖 Table of contents](README.md) · [← previous part](part8_reinforcement_learning.md) · [next part →](part10_embeddings_vector_retrieval_rag.md) · [Appendices](appendix.md)

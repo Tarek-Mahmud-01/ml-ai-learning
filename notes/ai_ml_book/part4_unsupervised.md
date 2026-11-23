@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part3_supervised_classification.md) · [next part →](part5_evaluation_special_ml.md) · [Appendices](appendix.md)
 
+
 > **Days 34–39 · Category: unsupervised learning — find structure with no labels · Levels: 1 → 3 in every chapter**
 > **You will be able to:** group rows (K-Means, hierarchical, DBSCAN, Gaussian mixtures), compress and visualize data (PCA, LDA, t-SNE, UMAP), choose features, and find anomalies (Isolation Forest, LOF) — the engine of your HRM payslip detector.
 > **Math you meet here (just-in-time):** centroid and SSE (Day 34) · Gaussian mixture, EM (35) · eigenvalues, covariance matrix, SVD (36) · explained variance (37) · mutual information, VIF (38).

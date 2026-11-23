@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [next part →](part2_supervised_regression.md) · [Appendices](appendix.md)
 
+
 > **Days 1–3 · Category: Foundations of practice · Levels: 1 → 3 inside every day**
 > **You will be able to:** run any ML project in the right order (question → data → split → baseline → model → metric → error analysis → improve), describe a dataset with numbers and plots, and measure how two columns move together.
 > **Math you meet here (just-in-time):** error and RMSE (Day 1) · mean, variance, std, IQR, z-score, CLT (Day 2) · covariance and Pearson r (Day 3).

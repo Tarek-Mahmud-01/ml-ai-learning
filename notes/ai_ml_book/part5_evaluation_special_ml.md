@@ -2,6 +2,7 @@
 
 [📖 Table of contents](README.md) · [← previous part](part4_unsupervised.md) · [next part →](part6_deep_learning_vision.md) · [Appendices](appendix.md)
 
+
 > **Days 40–47 · Category: model evaluation, tuning, explanation, and specialised problems · Levels: 1 → 3 in every chapter**
 > **You will be able to:** evaluate honestly, tune with a budget, explain a model and find where it fails, forecast time series, build a recommender, run an A/B test, and pass a 50-question classical-ML mock interview.
 > **Math you meet here (just-in-time):** Shapley values (Day 42) · autocorrelation and stationarity (43) · matrix factorization (45) · power and sample size (46).
